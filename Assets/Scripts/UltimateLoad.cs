@@ -1,18 +1,25 @@
+using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class UltimateLoad : MonoBehaviour {
     private float YinFill = 0f;
     private float YangFill = 0f;
 
+    [SerializeField]
+    private TextMeshProUGUI TextInfo;
+
     public void ActivateUltimate() {
         if (YinFill != 100 || YangFill != 100) return;
         else {
-            EndZone[] WinZones = GameObject.FindObjectsOfType<EndZone>();
+            EndZone[] WinZones = FindObjectsOfType<EndZone>();
             if (WinZones.All(x => x.Activated)) {
                 // Put win here
             } else {
-                // Display a messsage saying that at least one character isn't in the right place
+                TextInfo.alpha = 1f;
+                TextInfo.text = "One of the character is not on the ultimate point";
+                StartCoroutine(FadeText());
             }
         }
     }
@@ -21,14 +28,25 @@ public class UltimateLoad : MonoBehaviour {
         if (yin && YinFill < 100) {
             YinFill += amount;
             if (YinFill >= 100) {
-                //Display message "Yin is charged"
+                TextInfo.alpha = 1f;
+                TextInfo.text = "Yin is charged";
+                StartCoroutine(FadeText());
             }
         }
-        else if (!yin && YangFill < 100) {
+        if (!yin && YangFill < 100) {
             YangFill += amount;
-            if (YangFill > 100) {
-                //Display message "Yang is charged"    
+            if (YangFill >= 100) {
+                TextInfo.alpha = 1f;
+                TextInfo.text = "Yang is charged";
+                StartCoroutine(FadeText());
             }
+        }
+    }
+
+    public IEnumerator FadeText() {
+        while (TextInfo.alpha > 0) {
+            TextInfo.alpha -= (Time.deltaTime / 2);
+            yield return null;
         }
     }
 }
