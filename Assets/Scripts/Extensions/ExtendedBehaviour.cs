@@ -14,7 +14,7 @@ public static class ExtendedBehaviour
     public static T GetComponentInSibling<T>(this GameObject go)
         => go.transform.parent.GetComponentInChildren<T>();
     
-    public static bool Contains<T>(this GameObject go, out T component) {
+    public static bool Contains<T>(this GameObject go, out T component) where T: Behaviour {
         if (go.GetComponent<T>() != null) {
             component = go.GetComponent<T>();
             return true;
