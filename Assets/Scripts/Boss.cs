@@ -1,21 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] float _weakPointMaxDistance = .1f;
+    [SerializeField] float _weakPointMaxDistance = 1f;
     [SerializeField] Transform _weakPointTransform;
     UltimateLoad Ul;
     bool OffensiveStance = true;
     bool isAlive = true;
 
-    private void Start() {
+    private void Start()
+    {
         Ul = FindObjectOfType<UltimateLoad>();
         StartCoroutine(StanceChange());
     }
 
-    public void InflictDamage(bool isCritical = false) {
+    public void InflictDamage(bool isCritical = false)
+    {
         if (isCritical) {
             Ul.AddCharge(5, false);
         } else {
@@ -23,7 +24,8 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (OffensiveStance) {
             // Make offensive patterns, make attackable
         } else {
@@ -31,7 +33,8 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public IEnumerator StanceChange() {
+    public IEnumerator StanceChange()
+    {
         while (isAlive) {
             OffensiveStance = !OffensiveStance;
             yield return new WaitForSeconds(20);
@@ -40,6 +43,11 @@ public class Boss : MonoBehaviour
 
     public bool HasHitCloseToWeakPoint(Vector3 hitPos)
     {
+        if ((_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance)
+        {
+            Debug.Log("HasHitCloseToWeakPoint");
+            Debug.Log((_weakPointTransform.position - hitPos).magnitude);
+        }
         return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
     }
 }

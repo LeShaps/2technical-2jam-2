@@ -8,8 +8,8 @@ public class Fireball : Projectile
     private void OnCollisionEnter(Collision collision) 
     {
         Boss bossCharacter;
-
-        if (collision.gameObject.Contains(out bossCharacter)) {
+        if (collision.gameObject.Contains(out bossCharacter))
+        {
             ContactPoint contact = collision.contacts[0];
             if (bossCharacter.HasHitCloseToWeakPoint(contact.point))
             {
