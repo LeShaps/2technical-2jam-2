@@ -12,4 +12,5 @@ public class PlayerInfo : ScriptableObject
     public float RotationPower = 10f;
     [Range(5f, 20f)]
     public float Gravity = 10f;
+    public GameObject YangProjectile;
 }
