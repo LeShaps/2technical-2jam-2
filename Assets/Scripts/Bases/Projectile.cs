@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour
     public float Speed = 10f;
 
     private void Start() {
-        body = GetComponent<Rigidbody>();        
+        body = GetComponent<Rigidbody>();
+        body.useGravity = false;
     }
 
     private void Update() {

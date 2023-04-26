@@ -11,12 +11,15 @@ public class WaterShield : MonoBehaviour
 
     private void Start() {
         Ul = FindObjectOfType<UltimateLoad>();
-        StartCoroutine(RechargeShield());
     }
 
     private void Update() {
         if (Input.GetKeyUp(KeyCode.S)) {
             ShieldLife -= 10;
+        }
+
+        if (ShieldLife < 100) {
+            ShieldLife += Time.deltaTime;
         }
     }
 
@@ -26,15 +29,7 @@ public class WaterShield : MonoBehaviour
         if (collision.gameObject.Contains(out projectile)) {
             Destroy(projectile.gameObject);
             Ul.AddCharge(1, true);
-        }
-    }
-
-    private IEnumerator RechargeShield() {
-        while (true) {
-            if (ShieldLife < 100) {
-                ShieldLife += Time.deltaTime;
-                yield return null;
-            }
+            ShieldLife -= 2;
         }
     }
 }
