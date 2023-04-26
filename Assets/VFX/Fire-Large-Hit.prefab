@@ -19555,6 +19555,7 @@ GameObject:
   - component: {fileID: 3190395480076080295}
   - component: {fileID: 5192573884772788685}
   - component: {fileID: 9147815136440923249}
+  - component: {fileID: 3848642958218716082}
   m_Layer: 0
   m_Name: Fire-Large-Hit
   m_TagString: Untagged
@@ -24435,6 +24436,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3848642958218716082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678625072985264069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128031a8d97ff34ea5d4ee4b821c4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8148633752367041869
 GameObject:
   m_ObjectHideFlags: 0

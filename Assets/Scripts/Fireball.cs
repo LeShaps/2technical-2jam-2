@@ -13,15 +13,13 @@ public class Fireball : Projectile
             ContactPoint contact = collision.contacts[0];
             if (bossCharacter.HasHitCloseToWeakPoint(contact.point))
             {
-                var go = Instantiate(_explodeLargeVFX, contact.point, Quaternion.identity);
-                Destroy(go, 2f);
+                Instantiate(_explodeLargeVFX, contact.point, Quaternion.identity);
                 _explodeLargeVFX.Play();
                 bossCharacter.InflictDamage(true);
             }
             else
             {
-                var go = Instantiate(_explodeSmallVFX, contact.point, Quaternion.identity);
-                Destroy(go, 2f);
+                Instantiate(_explodeSmallVFX, contact.point, Quaternion.identity);
                 _explodeSmallVFX.Play();
                 bossCharacter.InflictDamage();
             }
