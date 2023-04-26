@@ -31,15 +31,6 @@ public class UltimateLoad : MonoBehaviour {
         }
     }
 
-    private void Update() {
-        if (Input.GetKeyUp(KeyCode.S)) {
-            AddCharge(10, true);
-        }
-        if (Input.GetKeyUp(KeyCode.U)) {
-            AddCharge(10, false);
-        }
-    }
-
     private void CheckFullCharge() {
         if (YinFill >= 100 &&  YangFill >= 100) {
             TextInfo.alpha = 1f;
