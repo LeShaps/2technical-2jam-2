@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerInfo _playerInfo;
+    [SerializeField] private Transform _fireballLaunchTransform;
 
     [HideInInspector] public bool IsActiveCharacter;
     [HideInInspector] public Vector2 Move { get; set; }
@@ -67,5 +68,13 @@ public class PlayerController : MonoBehaviour
 
         if (Move != Vector2.zero)
             _cc.Move(_moveDir * Time.deltaTime);
+    }
+
+    public void LaunchFireball()
+    {
+        var camForward = Camera.main.transform.TransformDirection(Vector3.forward);
+        Quaternion dir = Quaternion.LookRotation(camForward);
+        var go = Instantiate(_playerInfo.YangProjectile, _fireballLaunchTransform.position, dir);
+        Destroy(go, 10f);
     }
 }

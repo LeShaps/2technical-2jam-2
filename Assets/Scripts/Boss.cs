@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    [SerializeField] float _weakPointMaxDistance = .1f;
+    [SerializeField] Transform _weakPointTransform;
     UltimateLoad Ul;
     bool OffensiveStance = true;
     bool isAlive = true;
@@ -13,7 +15,7 @@ public class Boss : MonoBehaviour
         StartCoroutine(StanceChange());
     }
 
-    public void InflictDamage(bool isCritical) {
+    public void InflictDamage(bool isCritical = false) {
         if (isCritical) {
             Ul.AddCharge(5, false);
         } else {
@@ -34,5 +36,10 @@ public class Boss : MonoBehaviour
             OffensiveStance = !OffensiveStance;
             yield return new WaitForSeconds(20);
         }
+    }
+
+    public bool HasHitCloseToWeakPoint(Vector3 hitPos)
+    {
+        return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
     }
 }

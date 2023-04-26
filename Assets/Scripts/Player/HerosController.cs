@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterSwitcher : MonoBehaviour
+public class HerosController : MonoBehaviour
 {
     [SerializeField] private PlayerController _yinController;
     [SerializeField] private PlayerController _yangController;
@@ -30,6 +30,18 @@ public class CharacterSwitcher : MonoBehaviour
         else
         {
             _yangController.Move = value.Get<Vector2>();
+        }
+    }
+
+    public void OnFire(InputValue value)
+    {
+        if (_yinController.IsActiveCharacter)
+        {
+            // _yinController.ToggleShield();
+        }
+        else
+        {
+            _yangController.LaunchFireball();
         }
     }
 }
