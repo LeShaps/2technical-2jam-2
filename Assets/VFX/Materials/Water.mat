@@ -24,6 +24,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: 6d78821c75c9d2945a9a0024319fd433, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Norma:
+        m_Texture: {fileID: 2800000, guid: 51f133caca01b2b48a2b2fdde1d3605b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 51f133caca01b2b48a2b2fdde1d3605b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -38,9 +50,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 0.1
+    - _Normal_Strength: -6.13
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Scale: 0.81
+    - _Scroll: 0.12
+    - _Smoothness: 0.555
+    - _Strength: 0.1
+    - _Wibble: 0.16
+    m_Colors:
+    - _Color: {r: 0.028880388, g: 0.40847096, b: 0.5566038, a: 0}
+    - _Scroll_1: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Spec_Col: {r: 0.41349235, g: 0.75266993, b: 0.8679245, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4967941815272494561
 MonoBehaviour:
