@@ -14,10 +14,6 @@ public class WaterShield : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyUp(KeyCode.S)) {
-            ShieldLife -= 10;
-        }
-
         if (ShieldLife < 100) {
             ShieldLife += Time.deltaTime;
         }
