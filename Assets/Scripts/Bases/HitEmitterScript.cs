@@ -1,17 +1,18 @@
- using UnityEngine;
- using System.Collections;
- using System.Collections.Generic;
- public class HitEmitterScript : MonoBehaviour {
-     private float timeLeft;
-     public void Awake() {
-         ParticleSystem system = GetComponent<ParticleSystem>();
-         timeLeft = system.startLifetime;
-     }
+using UnityEngine;
+
+public class HitEmitterScript : MonoBehaviour
+{
+    private float _timeLeft;
+
+    public void Awake() {
+        ParticleSystem system = GetComponent<ParticleSystem>();
+        _timeLeft = system.main.startLifetimeMultiplier;
+    }
      
-     public void Update() {
-         timeLeft -= Time.deltaTime;
-         if (timeLeft <= 0) {
-             GameObject.Destroy(gameObject);
-         }
-     }
- }
+    public void Update() {
+        _timeLeft -= Time.deltaTime;
+        if (_timeLeft <= 0) {
+            GameObject.Destroy(gameObject);
+        }
+    }
+}

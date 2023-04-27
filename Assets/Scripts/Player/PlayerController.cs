@@ -75,6 +75,6 @@ public class PlayerController : MonoBehaviour
         var camForward = Camera.main.transform.TransformDirection(Vector3.forward);
         Quaternion dir = Quaternion.LookRotation(camForward);
         var go = Instantiate(_playerInfo.YangProjectile, _fireballLaunchTransform.position, dir);
-        Destroy(go, 10f);
+        Destroy(go, 3f);
     }
 }
