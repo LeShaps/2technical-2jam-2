@@ -4924,10 +4924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722ccaeb5f28dc24389669d211c418d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 220
-  _explodeSmallVFX: {fileID: 433394200141931375, guid: 848ee413631aadf4cb9db1d59c52ad27,
+  _speed: 210
+  _hitSmallVFX: {fileID: 433394200141931375, guid: 848ee413631aadf4cb9db1d59c52ad27,
     type: 3}
-  _explodeLargeVFX: {fileID: 5192573884772788685, guid: 0bca74a93850be748a66f3c97551df87,
+  _hitLargeVFX: {fileID: 5192573884772788685, guid: 0bca74a93850be748a66f3c97551df87,
     type: 3}
 --- !u!1 &7410369259737142458
 GameObject:

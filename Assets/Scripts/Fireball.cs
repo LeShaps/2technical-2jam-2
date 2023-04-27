@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    [SerializeField] ParticleSystem _explodeSmallVFX;
-    [SerializeField] ParticleSystem _explodeLargeVFX;
+    [SerializeField] ParticleSystem _hitSmallVFX;
+    [SerializeField] ParticleSystem _hitLargeVFX;
 
     private void OnCollisionEnter(Collision collision) 
     {
@@ -13,14 +13,14 @@ public class Fireball : Projectile
             ContactPoint contact = collision.contacts[0];
             if (bossCharacter.HasHitCloseToWeakPoint(contact.point))
             {
-                Instantiate(_explodeLargeVFX, contact.point, Quaternion.identity);
-                _explodeLargeVFX.Play();
+                Instantiate(_hitLargeVFX, contact.point, Quaternion.identity);
+                _hitLargeVFX.Play();
                 bossCharacter.InflictDamage(true);
             }
             else
             {
-                Instantiate(_explodeSmallVFX, contact.point, Quaternion.identity);
-                _explodeSmallVFX.Play();
+                Instantiate(_hitSmallVFX, contact.point, Quaternion.identity);
+                _hitSmallVFX.Play();
                 bossCharacter.InflictDamage();
             }
             Destroy(gameObject);
