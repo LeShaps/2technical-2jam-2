@@ -1,31 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaterShield : MonoBehaviour
 {
-    UltimateLoad Ul;
+    private UltimateLoad _ul;
+    [SerializeField] private float _shieldLife = 100f;
 
-    [SerializeField]
-    private float ShieldLife = 100f;
-
-    private void Start() {
-        Ul = FindObjectOfType<UltimateLoad>();
+    private void Start()
+    {
+        _ul = FindObjectOfType<UltimateLoad>();
     }
 
-    private void Update() {
-        if (ShieldLife < 100) {
-            ShieldLife += Time.deltaTime;
+    private void Update()
+    {
+        if (_shieldLife < 100) {
+            _shieldLife += Time.deltaTime;
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    private void OnCollisionEnter(Collision collision)
+    {
         BossProjectile projectile;
-
-        if (collision.gameObject.Contains(out projectile)) {
+        if (collision.gameObject.Contains(out projectile))
+        {
             Destroy(projectile.gameObject);
-            Ul.AddCharge(1, true);
-            ShieldLife -= 2;
+            _ul.AddCharge(1, true);
+            _shieldLife -= 2;
         }
     }
 }
