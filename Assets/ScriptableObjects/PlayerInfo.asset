@@ -16,5 +16,5 @@ MonoBehaviour:
   RunningSpeed: 15
   RotationPower: 7
   Gravity: 10
-  YangProjectile: {fileID: 7555463893664662113, guid: 35f1506a2f488ab4f9cfdcae0c8c424c,
+  YangProjectile: {fileID: 3112512059685295875, guid: 98bb7e3eba2fb7c42b5b90fb0b26016a,
     type: 3}
