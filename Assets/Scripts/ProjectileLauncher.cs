@@ -17,7 +17,7 @@ public class ProjectileLauncher : MonoBehaviour
         if (_timer < 0)
         {
             _timer = _timeBetweenFire;
-            var go = Instantiate(ProjectilePrefab, transform.position + (transform.forward * 1.1f), Quaternion.identity);
+            var go = Instantiate(ProjectilePrefab, transform.position + (transform.forward * 1.1f), Quaternion.LookRotation(transform.forward));
             Destroy(go, 2f);
         }
     }

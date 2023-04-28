@@ -3,68 +3,80 @@ using System.Collections;
 
 public class WaterShield : MonoBehaviour
 {
+    [SerializeField] GameObject _waterShieldHitParticleContainer;
+    [SerializeField] float _activationDuration = 4f;
+    [SerializeField] float _scaleUpSpeed = 2f;
+    [SerializeField] float _fadeInSpeed = 1.5f;
+    [SerializeField] float _fadeOutSpeed = 1.9f;
+    [SerializeField] float _waterShieldFadeMinTreshold = .1f;
+    [SerializeField] float _waterShieldFadeMaxTreshold = .9f;
     private UltimateLoad _ul;
-    [SerializeField] GameObject _shieldHitVFXContainer;
-    // [SerializeField] private float _shieldRegenerationSpeed = 1f;
-    // private float _shieldLife = 100f;
+    public float _toggleScaleTimer;
+    public float _toggleFadeTimer;
 
-    private void Start()
+    private void Awake()
     {
         _ul = FindObjectOfType<UltimateLoad>();
-    }
-
-    // private void Update()
-    // {
-        // if (_shieldLife < 100)
-        // {
-        //     _shieldLife += _shieldRegenerationSpeed * Time.deltaTime;
-        // }
-    // }
-
-    public void ToggleActive()
-    {
-        var doActive = !gameObject.activeInHierarchy;
-        if (doActive)
-        {
-            gameObject.SetActive(true);
-            StartCoroutine(ActiveShield());
-        }
-        else
-        {
-            Desactivate();
-        }
+        gameObject.SetActive(false);
+        transform.localScale = Vector3.zero;
+        Shader.SetGlobalFloat("_Water_Shield_Reveal_Amount", _waterShieldFadeMinTreshold);
     }
 
     public void Desactivate()
     {
-        StartCoroutine(DisableShield());
+        StartCoroutine(FadeOutThenDesactivateShield());
     }
 
-    const float _activationSpeed = 2f;
-    const float _desactivationSpeed = 4f;
-    private float _activationTime;
-
-    private IEnumerator ActiveShield()
+    public void ActivateFewSeconds()
     {
-        _activationTime = 0;
-        while (_activationTime < 1f)
+        if (!gameObject.activeInHierarchy)
         {
-            _activationTime += Time.deltaTime * _activationSpeed;
-            var t = EaseOutBack(_activationTime);
+            gameObject.SetActive(true);
+            StartCoroutine(ActivateShieldThenDesactivate());
+        }
+    }
+
+    private IEnumerator ActivateShieldThenDesactivate()
+    {
+        StartCoroutine(ScaleUpShield());
+        StartCoroutine(FadeInShield());
+        yield return new WaitForSeconds(_activationDuration);
+        Desactivate();
+    }
+
+    private IEnumerator ScaleUpShield()
+    {
+        _toggleScaleTimer = 0;
+        while (_toggleScaleTimer < 1f)
+        {
+            _toggleScaleTimer += Time.deltaTime * _scaleUpSpeed;
+            var t = EaseOutBack(_toggleScaleTimer);
             transform.localScale = new Vector3(t,t,t);
             yield return null;
         }
     }
 
-    private IEnumerator DisableShield()
+    private IEnumerator FadeInShield()
     {
-        _activationTime = 1f;
-        while (_activationTime > 0)
+        _toggleFadeTimer = _waterShieldFadeMinTreshold;
+        while (_toggleFadeTimer < _waterShieldFadeMaxTreshold)
         {
-            _activationTime -= Time.deltaTime * _desactivationSpeed;
-            var t = EaseOutBack(_activationTime);
-            transform.localScale = new Vector3(t,t,t);
-            if (_activationTime <= 0)
+            _toggleFadeTimer += Time.deltaTime * _fadeInSpeed;
+            var t = Mathf.Lerp(_waterShieldFadeMinTreshold, _waterShieldFadeMaxTreshold, _toggleFadeTimer);
+            Shader.SetGlobalFloat("_Water_Shield_Reveal_Amount", t);
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeOutThenDesactivateShield()
+    {
+        _toggleFadeTimer = _waterShieldFadeMaxTreshold;
+        while (_toggleFadeTimer > _waterShieldFadeMinTreshold)
+        {
+            _toggleFadeTimer -= Time.deltaTime * _fadeOutSpeed;
+            var t = Mathf.Lerp(_waterShieldFadeMinTreshold, _waterShieldFadeMaxTreshold, _toggleFadeTimer);
+            Shader.SetGlobalFloat("_Water_Shield_Reveal_Amount", t);
+            if (_toggleFadeTimer <= _waterShieldFadeMinTreshold)
             {
                 gameObject.SetActive(false);
             }
@@ -84,7 +96,7 @@ public class WaterShield : MonoBehaviour
             Destroy(projectile.gameObject);
             _ul.AddYinCharge();
             // _shieldLife -= 2;
-            foreach (ParticleSystem vfx in _shieldHitVFXContainer.GetComponentsInChildren<ParticleSystem>())
+            foreach (ParticleSystem vfx in _waterShieldHitParticleContainer.GetComponentsInChildren<ParticleSystem>())
             {
                 Instantiate(vfx, firstContact.point, Quaternion.identity);
                 vfx.Play();

@@ -16,7 +16,7 @@ public class EndZone : MonoBehaviour
         {
             if (IsYinZone && player.CompareTag("Yin") || !IsYinZone && player.CompareTag("Yang"))
             {
-                Debug.Log(IsYinZone ? "Yin" : "Yang" + " ready");
+                Debug.Log(IsYinZone ? "Yin ready" : "Yang ready");
                 Activated = true;
             }
         }

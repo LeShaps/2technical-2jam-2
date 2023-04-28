@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water 1
+  m_Name: WaterFoam
   m_Shader: {fileID: -6465566751694194690, guid: e453acb44039cfa459b3ad48c6a397b5,
     type: 3}
   m_Parent: {fileID: 0}
@@ -66,6 +66,7 @@ Material:
     - _Strength: 0.1
     - _Threshold: 0.59
     - _Water_Foam_Scale: 1.42
+    - _Water_Shield_Reveal_Amount: 1
     - _Wibble: 0.07
     - _Wibble_scroll: 0.15
     m_Colors:

@@ -46,7 +46,7 @@ public class HerosController : MonoBehaviour
     {
         if (_yinController.IsActiveCharacter)
         {
-            _yinWaterShield.ToggleActive();
+            _yinWaterShield.ActivateFewSeconds();
         }
         else
         {

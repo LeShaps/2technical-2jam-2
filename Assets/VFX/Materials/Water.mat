@@ -66,6 +66,7 @@ Material:
     - _Strength: 0.1
     - _Threshold: 0.55
     - _Water_Foam_Scale: 1
+    - _Water_Shield_Reveal_Amount: 1
     - _Wibble: 0.19
     - _Wibble_scroll: 0.09
     m_Colors:
