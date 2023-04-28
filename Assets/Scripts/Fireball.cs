@@ -20,12 +20,12 @@ public class Fireball : Projectile
                 EventManager.TriggerEvent("TriggerSymbol", "Fire");
                 Instantiate(_hitLargeVFX, contact.point, Quaternion.identity);
                 _hitLargeVFX.Play();
-                bossCharacter.InflictDamage(true);
+                UltimateLoad.Instance.AddYangCharge(true);
                 playSmallAnim = false;
             }
             else
             {
-                bossCharacter.InflictDamage();
+                UltimateLoad.Instance.AddYangCharge();
             }
         }
         if (playSmallAnim)

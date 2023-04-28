@@ -12,8 +12,8 @@ public class WaterShield : MonoBehaviour
     [SerializeField] float _waterShieldFadeMinTreshold = .1f;
     [SerializeField] float _waterShieldFadeMaxTreshold = .9f;
     private UltimateLoad _ul;
-    public float _toggleScaleTimer;
-    public float _toggleFadeTimer;
+    private float _toggleScaleTimer;
+    private float _toggleFadeTimer;
 
     private void Awake()
     {

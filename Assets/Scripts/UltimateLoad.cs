@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class UltimateLoad : MonoBehaviour
 {
-    // TODO: Singleton Instance
-    // public bool UltimateReady { get; set; }
     [SerializeField] int _yinChargeAmount = 10;
     [SerializeField] int _yangChargeAmount = 10;
     [SerializeField] int _yangCriticalChargeAmount = 20;
@@ -17,6 +15,9 @@ public class UltimateLoad : MonoBehaviour
     [SerializeField] private RawImage _ultimateImage;
     private float _yinFill = 0f;
     private float _yangFill = 0f;
+    public bool UltimateReady { get; private set; }
+    public static UltimateLoad Instance { get; private set; }
+    void Awake() => Instance = this;
 
     public void ActivateUltimate()
     {
@@ -25,7 +26,7 @@ public class UltimateLoad : MonoBehaviour
         else {
             EndZone[] WinZones = FindObjectsOfType<EndZone>();
             if (WinZones.All(x => x.Activated)) {
-                // Put win here
+                GameManager.Instance.ChangeState(GameState.Win);
             } else {
                 _textInfo.alpha = 1f;
                 _textInfo.text = "One of the character is not on the ultimate point";
@@ -64,7 +65,7 @@ public class UltimateLoad : MonoBehaviour
         }
     }
 
-    public void AddYangCharge(bool isCritical)
+    public void AddYangCharge(bool isCritical = false)
     {
         if (_yangFill < 100) {
             _yangFill += isCritical ? _yangCriticalChargeAmount : _yangChargeAmount;

@@ -1713,7 +1713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7815963, y: 0.58815116, z: -22.899208}
+  m_LocalPosition: {x: 0.780585, y: 0.58815116, z: -22.899218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336851293114195100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aabeb54f72d437044a02d8268f1433a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 570d312a5196a854fa99b02bd3c8e206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _waterShieldHitParticleContainer: {fileID: 2268677054123779730, guid: e845494805997764fa87dc6927789a20,
@@ -1849,8 +1849,6 @@ MonoBehaviour:
   _fadeOutSpeed: 1.9
   _waterShieldFadeMinTreshold: 0.1
   _waterShieldFadeMaxTreshold: 0.9
-  _toggleScaleTimer: 0
-  _toggleFadeTimer: 0
 --- !u!135 &789058973
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4608,7 +4606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 0.7815963, y: 0.58815116, z: -22.899208}
+  m_LocalPosition: {x: 0.780585, y: 0.58815116, z: -22.899218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

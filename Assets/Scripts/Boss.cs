@@ -5,19 +5,15 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] float _weakPointMaxDistance = 1f;
     [SerializeField] Transform _weakPointTransform;
-    private UltimateLoad _ul;
     private bool _offensiveStance = true;
     private bool _isAlive = true;
 
+    public static Boss Instance { get; private set; }
+    void Awake() => Instance = this;
+
     private void Start()
     {
-        _ul = FindObjectOfType<UltimateLoad>();
-        StartCoroutine(StanceChange());
-    }
-
-    public void InflictDamage(bool isCritical = false)
-    {
-        _ul.AddYangCharge(isCritical);
+        StartCoroutine(LoopAllPatterns());
     }
 
     private void Update()
@@ -29,7 +25,13 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public IEnumerator StanceChange()
+    public bool HasHitCloseToWeakPoint(Vector3 hitPos)
+    {
+        Debug.Log((_weakPointTransform.position - hitPos).magnitude);
+        return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
+    }
+
+    private IEnumerator LoopAllPatterns()
     {
         while (_isAlive) {
             _offensiveStance = !_offensiveStance;
@@ -37,9 +39,13 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public bool HasHitCloseToWeakPoint(Vector3 hitPos)
+    private void PatternFocus()
     {
-        Debug.Log((_weakPointTransform.position - hitPos).magnitude);
-        return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
+        
+    }
+
+    private void PatternCircle()
+    {
+        
     }
 }

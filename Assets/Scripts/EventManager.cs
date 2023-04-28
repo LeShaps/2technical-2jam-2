@@ -7,7 +7,6 @@ public class TypedEvent : UnityEvent<object> { }
 
 public class EventManager : MonoBehaviour
 {
-
     private Dictionary<string, UnityEvent> _events;
     private Dictionary<string, TypedEvent> _typedEvents;
     private static EventManager _eventManager;
