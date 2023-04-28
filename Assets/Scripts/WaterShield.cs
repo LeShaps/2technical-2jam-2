@@ -4,6 +4,7 @@ using System.Collections;
 public class WaterShield : MonoBehaviour
 {
     [SerializeField] GameObject _waterShieldHitParticleContainer;
+    [SerializeField] ParticleSystem _bossHitParticle;
     [SerializeField] float _activationDuration = 4f;
     [SerializeField] float _scaleUpSpeed = 2f;
     [SerializeField] float _fadeInSpeed = 1.5f;
@@ -85,14 +86,13 @@ public class WaterShield : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Projectile projectile; // TODO: for testing purpose
-        // BossProjectile projectile;
-        if (collision.gameObject.Contains(out projectile))
+        BossProjectile bossProjectile;
+        if (collision.gameObject.Contains(out bossProjectile))
         {
             ContactPoint firstContact = collision.contacts[0];
             Debug.Log("Normal of the first point: " + firstContact.normal);
             Debug.DrawRay(firstContact.point, firstContact.normal * 5, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f), 3f);
-            Destroy(projectile.gameObject);
+            Destroy(bossProjectile.gameObject);
             _ul.AddYinCharge();
             // _shieldLife -= 2;
             foreach (ParticleSystem vfx in _waterShieldHitParticleContainer.GetComponentsInChildren<ParticleSystem>())
@@ -100,6 +100,8 @@ public class WaterShield : MonoBehaviour
                 Instantiate(vfx, firstContact.point, Quaternion.identity);
                 vfx.Play();
             }
+            Instantiate(_bossHitParticle, firstContact.point, Quaternion.identity);
+            _bossHitParticle.Play();
             EventManager.TriggerEvent("TriggerSymbol", "Water");
         }
     }

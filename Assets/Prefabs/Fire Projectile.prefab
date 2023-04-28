@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5735477306760200324}
   - component: {fileID: 7601580745369993994}
   - component: {fileID: 8000905153923810290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trailing particles 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 2532413281496279376}
   - component: {fileID: 5975437598496721529}
   - component: {fileID: 5654766671928483912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4940,7 +4940,7 @@ GameObject:
   - component: {fileID: 4489736700560056704}
   - component: {fileID: 8677359129767226992}
   - component: {fileID: 9196355638617782461}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: red section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5023,7 +5023,7 @@ GameObject:
   - component: {fileID: 6038798581914881461}
   - component: {fileID: 7405916772793471288}
   - component: {fileID: 3998199718496143009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inner section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5106,7 +5106,7 @@ GameObject:
   - component: {fileID: 8360979745675327101}
   - component: {fileID: 8403036054208104475}
   - component: {fileID: 8194434643288550466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Projectile Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

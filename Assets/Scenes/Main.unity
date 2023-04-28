@@ -346,74 +346,6 @@ MonoBehaviour:
   m_ObjectForwardAxis: 2
   m_ObjectUpAxis: 1
   m_StartOffset: 0
---- !u!1 &231656096
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 231656099}
-  - component: {fileID: 231656098}
-  - component: {fileID: 231656097}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &231656097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231656096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &231656098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231656096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &231656099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231656096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251135417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,7 +1713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7811989, y: 0.58815116, z: -22.899212}
+  m_LocalPosition: {x: 0.7815963, y: 0.58815116, z: -22.899208}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1909,6 +1841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waterShieldHitParticleContainer: {fileID: 2268677054123779730, guid: e845494805997764fa87dc6927789a20,
     type: 3}
+  _bossHitParticle: {fileID: 3398034184122289292, guid: ae7ac36da02ce8e4b833c73e93a47a48,
+    type: 3}
   _activationDuration: 4
   _scaleUpSpeed: 2
   _fadeInSpeed: 1.5
@@ -2034,9 +1968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2390194f243da134590bcff33ca1891b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 3112512059685295875, guid: 98bb7e3eba2fb7c42b5b90fb0b26016a,
+  ProjectilePrefab: {fileID: 5360143799700580182, guid: a9fc02ad94a6b9a47b8691db8607a250,
     type: 3}
-  _timeBetweenFire: 0.8
+  _timeBetweenFire: 0.4
 --- !u!1 &845201728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +1982,7 @@ GameObject:
   - component: {fileID: 845201729}
   - component: {fileID: 845201731}
   - component: {fileID: 845201730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2463,8 +2397,8 @@ GameObject:
   - component: {fileID: 1035702498}
   - component: {fileID: 1035702497}
   - component: {fileID: 1035702496}
-  m_Layer: 0
-  m_Name: YinMesh
+  m_Layer: 7
+  m_Name: YangMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3449,7 +3383,7 @@ GameObject:
   - component: {fileID: 1606040840}
   - component: {fileID: 1606040843}
   - component: {fileID: 1606040842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Yang
   m_TagString: Yang
   m_Icon: {fileID: 0}
@@ -3667,7 +3601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665287274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileLaunchPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -3702,7 +3636,7 @@ GameObject:
   - component: {fileID: 1678084492}
   - component: {fileID: 1678084491}
   - component: {fileID: 1678084490}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: YinMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3968,7 +3902,7 @@ GameObject:
   - component: {fileID: 1928309729}
   - component: {fileID: 1928309731}
   - component: {fileID: 1928309730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4309,7 +4243,7 @@ GameObject:
   - component: {fileID: 2011135410}
   - component: {fileID: 2011135409}
   - component: {fileID: 2011135411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Yin
   m_TagString: Yin
   m_Icon: {fileID: 0}
@@ -4407,7 +4341,7 @@ GameObject:
   - component: {fileID: 2020640641}
   - component: {fileID: 2020640640}
   - component: {fileID: 2020640639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AimingTweakHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4674,7 +4608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 0.7811989, y: 0.58815116, z: -22.899212}
+  m_LocalPosition: {x: 0.7815963, y: 0.58815116, z: -22.899208}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4743,8 +4677,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 5
-    m_Time: 0.7
+    m_Style: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
