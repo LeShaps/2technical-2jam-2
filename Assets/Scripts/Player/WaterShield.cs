@@ -102,6 +102,7 @@ public class WaterShield : MonoBehaviour
             }
             Instantiate(_bossHitParticle, firstContact.point, Quaternion.identity);
             _bossHitParticle.Play();
+            SoundManager.GetInstance().PlayLocalizedPitch("Shield", GetComponent<AudioSource>());
             EventManager.TriggerEvent("TriggerSymbol", "Water");
         }
     }

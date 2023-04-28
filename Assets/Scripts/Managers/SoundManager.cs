@@ -49,6 +49,7 @@ public class SoundManager : MonoBehaviour
     {
         Source.clip = _audioLabels.Where(x => x.Label == Label).FirstOrDefault().Audio;
         Source.volume = volume;
+        Source.spatialize = true;
         Source.Play();
     }
 

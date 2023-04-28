@@ -5,6 +5,10 @@ public class Fireball : Projectile
     [SerializeField] ParticleSystem _hitSmallVFX;
     [SerializeField] ParticleSystem _hitLargeVFX;
 
+    private void Awake() {
+        SoundManager.GetInstance().PlaySoundLocalized("Fireball", GetComponent<AudioSource>());
+    }
+
     private void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.CompareTag("Yang"))
@@ -13,18 +17,21 @@ public class Fireball : Projectile
         bool playSmallAnim = true;
         Boss bossCharacter;
         ContactPoint contact = collision.contacts[0];
+
         if (collision.gameObject.Contains(out bossCharacter))
         {
             if (bossCharacter.HasHitCloseToWeakPoint(contact.point))
             {
                 EventManager.TriggerEvent("TriggerSymbol", "Fire");
                 Instantiate(_hitLargeVFX, contact.point, Quaternion.identity);
+                SoundManager.GetInstance().PlaySoundGeneral("FireballHeavyHit");
                 _hitLargeVFX.Play();
                 UltimateLoad.Instance.AddYangCharge(true);
                 playSmallAnim = false;
             }
             else
             {
+                SoundManager.GetInstance().PlaySoundGeneral("FireballSmallHit");
                 UltimateLoad.Instance.AddYangCharge();
             }
         }
