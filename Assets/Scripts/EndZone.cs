@@ -1,22 +1,32 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(SphereCollider))]
 public class EndZone : MonoBehaviour
 {
     public bool Activated = false;
+    public bool IsYinZone;
 
-    private void OnCollisionEnter(Collision collision) {
-        Player player;
-
-        if (collision.gameObject.Contains(out player)) {
-            Activated = true;
+    private void OnTriggerEnter(Collider collider)
+    {
+        // if (!UltimateLoad.Instance.UltimateReady)
+        //     return;
+        
+        PlayerController player;
+        if (collider.gameObject.Contains(out player))
+        {
+            if (IsYinZone && player.CompareTag("Yin") || !IsYinZone && player.CompareTag("Yang"))
+            {
+                Debug.Log(IsYinZone ? "Yin" : "Yang" + " ready");
+                Activated = true;
+            }
         }
     }
 
-    private void OnCollisionExit(Collision collision) {
-        Player player;
-
-        if (collision.gameObject.Contains(out player)) {
+    private void OnTriggerExit(Collider collider)
+    {
+        PlayerController player;
+        if (collider.gameObject.Contains(out player))
+        {
             Activated = false;
         }
     }

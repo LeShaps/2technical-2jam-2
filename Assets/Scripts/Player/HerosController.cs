@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 public class HerosController : MonoBehaviour
 {
     [SerializeField] private PlayerController _yinController;
+    [SerializeField] private WaterShield _yinWaterShield;
+
     [SerializeField] private PlayerController _yangController;
-    [SerializeField] private GameObject _yinVcam;
+    [SerializeField] private GameObject _yangVcam;
 
     void Start()
     {
@@ -14,11 +16,18 @@ public class HerosController : MonoBehaviour
 
     public void OnSwitchCharacter(InputValue value)
     {
-        _yinVcam.SetActive(!_yinVcam.activeInHierarchy);
-        _yinController.IsActiveCharacter = !_yinController.IsActiveCharacter;
-        _yangController.IsActiveCharacter = !_yangController.IsActiveCharacter;
+        bool activateYin = !_yinController.IsActiveCharacter;
+
+        _yangVcam.SetActive(!activateYin);
+        _yinController.IsActiveCharacter = activateYin;
+        _yangController.IsActiveCharacter = !activateYin;
         _yinController.Move = Vector2.zero;
         _yangController.Move = Vector2.zero;
+
+        if (!activateYin && _yinWaterShield.isActiveAndEnabled)
+        {
+            _yinWaterShield.Desactivate();
+        }
     }
 
     public void OnMove(InputValue value)
@@ -37,7 +46,7 @@ public class HerosController : MonoBehaviour
     {
         if (_yinController.IsActiveCharacter)
         {
-            // _yinController.ToggleShield();
+            _yinWaterShield.ToggleActive();
         }
         else
         {

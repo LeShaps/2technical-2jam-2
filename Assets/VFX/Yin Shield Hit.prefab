@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2268677054123779730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.152, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1453256921078240652}
   - {fileID: 2844026120762769119}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6305343643631386167
 GameObject:
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2844026120762769119}
   - component: {fileID: 2728994497973271957}
   - component: {fileID: 4911943008362728558}
+  - component: {fileID: 9182396603983157780}
   m_Layer: 0
   m_Name: Burst Large
   m_TagString: Untagged
@@ -4919,6 +4920,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &9182396603983157780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305343643631386167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128031a8d97ff34ea5d4ee4b821c4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7689069519107284340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,6 +4943,7 @@ GameObject:
   - component: {fileID: 1453256921078240652}
   - component: {fileID: 4259322754358126380}
   - component: {fileID: 6932550039146209402}
+  - component: {fileID: 5665237667284623746}
   m_Layer: 0
   m_Name: Burst
   m_TagString: Untagged
@@ -9805,3 +9819,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5665237667284623746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689069519107284340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128031a8d97ff34ea5d4ee4b821c4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

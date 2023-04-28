@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             camForward.y = 0;
             var camRight = Camera.main.transform.TransformDirection(Vector3.right);
             _targetDirection = Move.x * camRight + Move.y * camForward;
-    
+
             if(Move != Vector2.zero && _targetDirection.magnitude > 0.1f)
             {
                 Vector3 lookDirection = _targetDirection.normalized;
@@ -73,8 +73,12 @@ public class PlayerController : MonoBehaviour
     public void LaunchFireball()
     {
         var camForward = Camera.main.transform.TransformDirection(Vector3.forward);
-        Quaternion dir = Quaternion.LookRotation(camForward);
-        var go = Instantiate(_playerInfo.YangProjectile, _fireballLaunchTransform.position, dir);
+
+        // Rotate player before projectile launch
+        transform.rotation = Quaternion.LookRotation( new Vector3(camForward.x, 0, camForward.z) );
+        
+        Quaternion projectileDir = Quaternion.LookRotation(camForward);
+        var go = Instantiate(_playerInfo.YangProjectile, _fireballLaunchTransform.position, projectileDir);
         Destroy(go, 3f);
     }
 }
