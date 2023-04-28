@@ -17,7 +17,6 @@ public class WaterShield : MonoBehaviour
     private void Awake()
     {
         _ul = FindObjectOfType<UltimateLoad>();
-        gameObject.SetActive(false);
         transform.localScale = Vector3.zero;
         Shader.SetGlobalFloat("_Water_Shield_Reveal_Amount", _waterShieldFadeMinTreshold);
     }
@@ -101,6 +100,7 @@ public class WaterShield : MonoBehaviour
                 Instantiate(vfx, firstContact.point, Quaternion.identity);
                 vfx.Play();
             }
+            EventManager.TriggerEvent("TriggerSymbol", "Water");
         }
     }
 

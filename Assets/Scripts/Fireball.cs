@@ -13,6 +13,7 @@ public class Fireball : Projectile
             ContactPoint contact = collision.contacts[0];
             if (bossCharacter.HasHitCloseToWeakPoint(contact.point))
             {
+                EventManager.TriggerEvent("TriggerSymbol", "Fire");
                 Instantiate(_hitLargeVFX, contact.point, Quaternion.identity);
                 _hitLargeVFX.Play();
                 bossCharacter.InflictDamage(true);

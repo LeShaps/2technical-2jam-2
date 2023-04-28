@@ -44,6 +44,9 @@ public class HerosController : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
+        if (Time.timeSinceLevelLoad == 0)
+            return;
+
         if (_yinController.IsActiveCharacter)
         {
             _yinWaterShield.ActivateFewSeconds();
