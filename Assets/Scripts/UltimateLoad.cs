@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class UltimateLoad : MonoBehaviour
 {
-    private float _yinFill = 0f;
-    private float _yangFill = 0f;
-
+    // TODO: Singleton Instance
+    // public bool UltimateReady { get; set; }
+    [SerializeField] int _yinChargeAmount = 10;
+    [SerializeField] int _yangChargeAmount = 10;
+    [SerializeField] int _yangCriticalChargeAmount = 20;
     [SerializeField] private TextMeshProUGUI _textInfo;
     [SerializeField] private Slider _yinSlider;
     [SerializeField] private Slider _yangSlider;
     [SerializeField] private RawImage _ultimateImage;
+    private float _yinFill = 0f;
+    private float _yangFill = 0f;
 
     public void ActivateUltimate()
     {
@@ -45,11 +49,12 @@ public class UltimateLoad : MonoBehaviour
         }
     }
 
-    public void AddCharge(float amount, bool yin) {
-        if (yin && _yinFill < 100) {
-            _yinFill += amount;
+    public void AddYinCharge()
+    {
+        if (_yinFill < 100)
+        {
+            _yinFill += _yinChargeAmount;
             _yinSlider.value = _yinFill;
-
             if (_yinFill >= 100) {
                 _textInfo.alpha = 1f;
                 _textInfo.text = "Yin is charged";
@@ -57,12 +62,15 @@ public class UltimateLoad : MonoBehaviour
                 CheckFullCharge();
             }
         }
+    }
 
-        if (!yin && _yangFill < 100) {
-            _yangFill += amount;
+    public void AddYangCharge(bool isCritical)
+    {
+        if (_yangFill < 100) {
+            _yangFill += isCritical ? _yangCriticalChargeAmount : _yangChargeAmount;
             _yangSlider.value = _yangFill;
-
-            if (_yangFill >= 100) {
+            if (_yangFill >= 100)
+            {
                 _textInfo.alpha = 1f;
                 _textInfo.text = "Yang is charged";
                 StartCoroutine(FadeText());

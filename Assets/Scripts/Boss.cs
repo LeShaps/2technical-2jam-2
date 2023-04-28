@@ -17,11 +17,7 @@ public class Boss : MonoBehaviour
 
     public void InflictDamage(bool isCritical = false)
     {
-        if (isCritical) {
-            _ul.AddCharge(5, false);
-        } else {
-            _ul.AddCharge(1, false);
-        }
+        _ul.AddYangCharge(isCritical);
     }
 
     private void Update()
@@ -43,11 +39,7 @@ public class Boss : MonoBehaviour
 
     public bool HasHitCloseToWeakPoint(Vector3 hitPos)
     {
-        if ((_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance)
-        {
-            Debug.Log("HasHitCloseToWeakPoint");
-            Debug.Log((_weakPointTransform.position - hitPos).magnitude);
-        }
+        Debug.Log((_weakPointTransform.position - hitPos).magnitude);
         return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
     }
 }

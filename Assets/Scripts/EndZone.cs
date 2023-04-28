@@ -4,14 +4,21 @@ using UnityEngine;
 public class EndZone : MonoBehaviour
 {
     public bool Activated = false;
+    public bool IsYinZone;
 
     private void OnTriggerEnter(Collider collider)
     {
+        // if (!UltimateLoad.Instance.UltimateReady)
+        //     return;
+        
         PlayerController player;
         if (collider.gameObject.Contains(out player))
         {
-            Activated = true;
-            Debug.Log("Desactivated");
+            if (IsYinZone && player.CompareTag("Yin") || !IsYinZone && player.CompareTag("Yang"))
+            {
+                Debug.Log(IsYinZone ? "Yin" : "Yang" + " ready");
+                Activated = true;
+            }
         }
     }
 
@@ -21,7 +28,6 @@ public class EndZone : MonoBehaviour
         if (collider.gameObject.Contains(out player))
         {
             Activated = false;
-            Debug.Log("Activated");
         }
     }
 }

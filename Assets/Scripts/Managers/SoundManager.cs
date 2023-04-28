@@ -13,7 +13,6 @@ public struct SoundLabel {
     public AudioClip Audio;
 }
 
-
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _generalAudio;

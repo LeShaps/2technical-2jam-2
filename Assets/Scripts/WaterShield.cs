@@ -78,13 +78,15 @@ public class WaterShield : MonoBehaviour
         // BossProjectile projectile;
         if (collision.gameObject.Contains(out projectile))
         {
-            ContactPoint contact = collision.contacts[0];
+            ContactPoint firstContact = collision.contacts[0];
+            Debug.Log("Normal of the first point: " + firstContact.normal);
+            Debug.DrawRay(firstContact.point, firstContact.normal * 5, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f), 3f);
             Destroy(projectile.gameObject);
-            _ul.AddCharge(1, true);
+            _ul.AddYinCharge();
             // _shieldLife -= 2;
             foreach (ParticleSystem vfx in _shieldHitVFXContainer.GetComponentsInChildren<ParticleSystem>())
             {
-                Instantiate(vfx, contact.point, Quaternion.identity);
+                Instantiate(vfx, firstContact.point, Quaternion.identity);
                 vfx.Play();
             }
         }

@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 public class HerosController : MonoBehaviour
 {
     [SerializeField] private PlayerController _yinController;
-    [SerializeField] private GameObject _yinVcam;
     [SerializeField] private WaterShield _yinWaterShield;
 
     [SerializeField] private PlayerController _yangController;
+    [SerializeField] private GameObject _yangVcam;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class HerosController : MonoBehaviour
     {
         bool activateYin = !_yinController.IsActiveCharacter;
 
-        _yinVcam.SetActive(activateYin);
+        _yangVcam.SetActive(!activateYin);
         _yinController.IsActiveCharacter = activateYin;
         _yangController.IsActiveCharacter = !activateYin;
         _yinController.Move = Vector2.zero;
