@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    public GameObject ProjectilePrefab;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float _timeBetweenFire = 1f;
     private float _timer;
 
@@ -17,7 +17,7 @@ public class ProjectileLauncher : MonoBehaviour
         if (_timer < 0)
         {
             _timer = _timeBetweenFire;
-            var go = Instantiate(ProjectilePrefab, transform.position + (transform.forward * 1.1f), Quaternion.LookRotation(transform.forward));
+            var go = Instantiate(projectilePrefab, transform.position + (transform.forward * 1.1f), Quaternion.LookRotation(transform.forward));
             Destroy(go, 2f);
         }
     }

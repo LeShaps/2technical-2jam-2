@@ -3,19 +3,11 @@ using UnityEngine.InputSystem;
 
 public class HerosController : MonoBehaviour
 {
-    [SerializeField] private PlayerController _yinController;
     [SerializeField] private WaterShield _yinWaterShield;
-
-    [SerializeField] private PlayerController _yangController;
     [SerializeField] private GameObject _yangVcam;
 
     private float _refillCharge;
     private bool _isRefilling = false;
-
-    void Start()
-    {
-        _yinController.IsActiveCharacter = true;
-    }
 
     private void Update() {
         if (_isRefilling) {
@@ -29,15 +21,12 @@ public class HerosController : MonoBehaviour
 
     public void OnSwitchCharacter(InputValue value)
     {
-        bool activateYin = !_yinController.IsActiveCharacter;
+        GameManager.Instance.SwitchActivePlayer();
+        bool activeYang = GameManager.Instance.ActivePlayer == Player.Yang;
 
-        _yangVcam.SetActive(!activateYin);
-        _yinController.IsActiveCharacter = activateYin;
-        _yangController.IsActiveCharacter = !activateYin;
-        _yinController.Move = Vector2.zero;
-        _yangController.Move = Vector2.zero;
+        _yangVcam.SetActive(activeYang);
 
-        if (!activateYin && _yinWaterShield.isActiveAndEnabled)
+        if (activeYang && _yinWaterShield.isActiveAndEnabled)
         {
             _yinWaterShield.Desactivate();
         }
@@ -45,13 +34,13 @@ public class HerosController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        if (_yinController.IsActiveCharacter)
+        if (GameManager.Instance.ActivePlayer == Player.Yang)
         {
-            _yinController.Move = value.Get<Vector2>();
+            GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
         }
         else
         {
-            _yangController.Move = value.Get<Vector2>();
+            GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
         }
     }
 
@@ -60,7 +49,7 @@ public class HerosController : MonoBehaviour
         if (Time.timeSinceLevelLoad == 0)
             return;
 
-        if (_yinController.IsActiveCharacter)
+        if (GameManager.Instance.ActivePlayer == Player.Yin)
         {
             if (!_isRefilling) {
                 _yinWaterShield.ActivateFewSeconds();
@@ -69,7 +58,7 @@ public class HerosController : MonoBehaviour
         }
         else
         {
-            _yangController.LaunchFireball();
+            GameManager.Instance.ActivePlayerController.LaunchFireball();
         }
     }
 }

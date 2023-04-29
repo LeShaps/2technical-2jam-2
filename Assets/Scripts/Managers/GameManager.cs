@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private PlayerController _yangController;
+    [SerializeField] private PlayerController _yinController;
+    public Player ActivePlayer { get; set; }
+    public PlayerController ActivePlayerController { get; set; }
+
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
 
@@ -11,9 +16,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     void Awake() => Instance = this;
 
-    void Start() => ChangeState(GameState.Starting);
+    void Start()
+    {
+        ActivePlayer = Player.Yin;
+        ActivePlayerController = _yinController;
+        
+        ChangeState(GameState.Starting);
+    }
 
-    public void ChangeState(GameState newState) {
+    public void ChangeState(GameState newState)
+    {
         OnBeforeStateChanged?.Invoke(newState);
 
         State = newState;
@@ -39,13 +51,27 @@ public class GameManager : MonoBehaviour
         Debug.Log($"New state: {newState}");
     }
 
+    public void SwitchActivePlayer()
+    {
+        if (ActivePlayer == Player.Yang) {
+            ActivePlayer = Player.Yin;
+            ActivePlayerController = _yinController;
+        } else {
+            ActivePlayer = Player.Yang;
+            ActivePlayerController = _yangController;
+        }
+        _yinController.Move = Vector2.zero;
+        _yangController.Move = Vector2.zero;
+    }
+
     private void HandleStarting()
     {
+        ChangeState(GameState.BossPatternFocus);
     }
 
     private void HandleBossPatternFocus()
     {
-        // Boss.Instance.PatternFocus();
+        Boss.Instance.StartPatterns();
     }
 
     private void HandleBossPatternCircle()
@@ -60,9 +86,17 @@ public class GameManager : MonoBehaviour
 }
 
 [Serializable]
-public enum GameState {
+public enum GameState
+{
     Starting = 0,
     BossPatternFocus = 1,
     BossPatternCircle = 2,
     Win = 3,
+}
+
+[Serializable]
+public enum Player
+{
+    Yin = 0,
+    Yang = 1,
 }
