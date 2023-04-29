@@ -121,7 +121,6 @@ public class Boss : MonoBehaviour
             Vector3 lookPlayerDir = (playerPos - bossPos).normalized;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayerDir), Time.deltaTime);
 
-
             // Orb Waves
             _circleOrbsTimer -= Time.deltaTime;
             if (_circleOrbsTimer < 0)
@@ -143,6 +142,7 @@ public class Boss : MonoBehaviour
                     spawnPos = spawnPos * _circleOrbLaunchRadius + transform.position;
                     var spawnDir = (spawnPos - transform.position).normalized;
                     spawnPos.y = _orbSpawnHeight;
+                    // TODO: create variation (spawn and )
                     SpawnOrb(spawnPos, spawnDir, _circleOrbSpeed, _circleOrbDuration);
                 }
                 // TODO: orb goes then comes back to the wizard

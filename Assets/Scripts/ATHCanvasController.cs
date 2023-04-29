@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class FeedbackCanvasController : MonoBehaviour
+public class ATHCanvasController : MonoBehaviour
 {
-    Animator _spriteFeedbackCanvasAnimator;
+    Animator _animator;
     private int _currentFireAnimIndex = 1;
     private int _currentWaterAnimIndex = 1;
 
     private void Awake()
     {
-        _spriteFeedbackCanvasAnimator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
 
         EventManager.AddListener("TriggerSymbol", OnTriggerSymbol);
         EventManager.AddListener("TriggerShield", OnTriggerShield);
@@ -21,13 +21,13 @@ public class FeedbackCanvasController : MonoBehaviour
         {
             _currentFireAnimIndex++;
             if (_currentFireAnimIndex > 3) _currentFireAnimIndex = 1;
-            _spriteFeedbackCanvasAnimator.SetTrigger("FireSymbol_" + _currentFireAnimIndex);
+            _animator.SetTrigger("FireSymbol_" + _currentFireAnimIndex);
         }
         else if (element == "Water")
         {
             _currentWaterAnimIndex++;
             if (_currentWaterAnimIndex > 2) _currentWaterAnimIndex = 1;
-            _spriteFeedbackCanvasAnimator.SetTrigger("WaterSymbol_" + _currentWaterAnimIndex);
+            _animator.SetTrigger("WaterSymbol_" + _currentWaterAnimIndex);
         }
     }
 
@@ -35,9 +35,9 @@ public class FeedbackCanvasController : MonoBehaviour
         string part = data as string;
 
         if (part == "Fill") {
-            _spriteFeedbackCanvasAnimator.SetTrigger("FillShieldCooldown");
+            _animator.SetTrigger("FillShieldCooldown");
         } else {
-            _spriteFeedbackCanvasAnimator.SetTrigger("DeplateShield");
+            _animator.SetTrigger("DeplateShield");
         }
     }
 }

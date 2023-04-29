@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float _speed = 150f;
-    private Rigidbody _rb;
+    [SerializeField] float _speed = 150f;
+    Rigidbody _rb;
 
-    private void Start()
+    void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;

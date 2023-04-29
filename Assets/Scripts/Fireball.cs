@@ -5,11 +5,12 @@ public class Fireball : Projectile
     [SerializeField] ParticleSystem _hitSmallVFX;
     [SerializeField] ParticleSystem _hitLargeVFX;
 
-    private void Awake() {
+    void Awake()
+    {
         SoundManager.GetInstance().PlaySoundLocalized("Fireball", GetComponent<AudioSource>());
     }
 
-    private void OnCollisionEnter(Collision collision) 
+    void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.CompareTag("Yang"))
             return;
