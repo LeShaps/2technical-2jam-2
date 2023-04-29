@@ -35,11 +35,8 @@ public class GameManager : MonoBehaviour
             case GameState.Starting:
                 HandleStarting();
                 break;
-            case GameState.BossPatternFocus:
-                HandleBossPatternFocus();
-                break;
-            case GameState.BossPatternCircle:
-                HandleBossPatternCircle();
+            case GameState.BossPatterns:
+                HandleBossPatterns();
                 break;
             case GameState.Win:
                 HandleWin();
@@ -68,21 +65,18 @@ public class GameManager : MonoBehaviour
 
     private void HandleStarting()
     {
-        ChangeState(GameState.BossPatternFocus);
+        ChangeState(GameState.BossPatterns);
     }
 
-    private void HandleBossPatternFocus()
+    private void HandleBossPatterns()
     {
         Boss.Instance.StartPatterns();
     }
 
-    private void HandleBossPatternCircle()
-    {
-        // Boss.Instance.PatternCircle();
-    }
-
     private void HandleWin()
     {
+        Boss.Instance.StopPatterns();
+        
         Debug.Log("======== GameManager::Win ========");
     }
 }
@@ -91,9 +85,8 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Starting = 0,
-    BossPatternFocus = 1,
-    BossPatternCircle = 2,
-    Win = 3,
+    BossPatterns = 1,
+    Win = 2,
 }
 
 [Serializable]
