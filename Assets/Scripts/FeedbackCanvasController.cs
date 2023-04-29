@@ -11,6 +11,7 @@ public class FeedbackCanvasController : MonoBehaviour
         _spriteFeedbackCanvasAnimator = GetComponent<Animator>();
 
         EventManager.AddListener("TriggerSymbol", OnTriggerSymbol);
+        EventManager.AddListener("TriggerShield", OnTriggerShield);
     }
 
     private void OnTriggerSymbol(object data)
@@ -30,4 +31,13 @@ public class FeedbackCanvasController : MonoBehaviour
         }
     }
 
+    private void OnTriggerShield(object data) {
+        string part = data as string;
+
+        if (part == "Fill") {
+            _spriteFeedbackCanvasAnimator.SetTrigger("FillShieldCooldown");
+        } else {
+            _spriteFeedbackCanvasAnimator.SetTrigger("DeplateShield");
+        }
+    }
 }

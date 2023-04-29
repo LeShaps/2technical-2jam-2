@@ -9,9 +9,22 @@ public class HerosController : MonoBehaviour
     [SerializeField] private PlayerController _yangController;
     [SerializeField] private GameObject _yangVcam;
 
+    private float _refillCharge;
+    private bool _isRefilling = false;
+
     void Start()
     {
         _yinController.IsActiveCharacter = true;
+    }
+
+    private void Update() {
+        if (_isRefilling) {
+            _refillCharge += Time.deltaTime;
+            if (_refillCharge > 8f) {
+                _isRefilling = false;
+                _refillCharge = 0;
+            }
+        }
     }
 
     public void OnSwitchCharacter(InputValue value)
@@ -49,7 +62,10 @@ public class HerosController : MonoBehaviour
 
         if (_yinController.IsActiveCharacter)
         {
-            _yinWaterShield.ActivateFewSeconds();
+            if (!_isRefilling) {
+                _yinWaterShield.ActivateFewSeconds();
+                _isRefilling = true;
+            }
         }
         else
         {
