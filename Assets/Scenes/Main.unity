@@ -1786,7 +1786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.781054, y: 0.58815116, z: -22.899212}
+  m_LocalPosition: {x: 0.780585, y: 0.58815116, z: -22.899218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3985,7 +3985,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInfo: {fileID: 11400000, guid: f98e66f079f17524c99b7b5393620fd3, type: 2}
   _fireballLaunchTransform: {fileID: 1665287274}
-  IsActiveCharacter: 0
 --- !u!1 &1630233150
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,7 +4855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInfo: {fileID: 11400000, guid: f98e66f079f17524c99b7b5393620fd3, type: 2}
   _fireballLaunchTransform: {fileID: 1665287274}
-  IsActiveCharacter: 0
 --- !u!95 &2011135411
 Animator:
   serializedVersion: 5
@@ -5157,7 +5155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 0.781054, y: 0.58815116, z: -22.899212}
+  m_LocalPosition: {x: 0.780585, y: 0.58815116, z: -22.899218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
