@@ -1579,7 +1579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8507619, y: 0.58815116, z: -22.898518}
+  m_LocalPosition: {x: 0.7811603, y: 0.58815116, z: -22.899212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2814,7 +2814,7 @@ GameObject:
   - component: {fileID: 1450684652}
   - component: {fileID: 1450684658}
   - component: {fileID: 1450684657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wizard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2986,8 +2986,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473414439}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.26, z: 0}
-  m_LocalScale: {x: 7.5095196, y: 7.5095196, z: 7.5095196}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0.37}
+  m_LocalScale: {x: 4.6741652, y: 4.6741652, z: 4.6741652}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 210386028}
@@ -3385,6 +3385,7 @@ GameObject:
   - component: {fileID: 1606040845}
   - component: {fileID: 1606040844}
   - component: {fileID: 1606040842}
+  - component: {fileID: 1606040846}
   m_Layer: 7
   m_Name: Yang
   m_TagString: Yang
@@ -3484,6 +3485,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca62a7591637db4dacb3b3ac31fdae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1606040846
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606040839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16ba1d4a3b8f9be49a6d865ae7f5391c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1630233150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,8 +3675,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661645081}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.28, z: 0}
-  m_LocalScale: {x: 6.56373, y: 6.563731, z: 6.563731}
+  m_LocalPosition: {x: 0, y: 0.1, z: -0.37}
+  m_LocalScale: {x: 4.3011465, y: 4.3011475, z: 4.3011475}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2076890914}
@@ -4456,7 +4478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 0.8507619, y: 0.58815116, z: -22.898518}
+  m_LocalPosition: {x: 0.7811603, y: 0.58815116, z: -22.899212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18489,7 +18511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6044196103457393559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.78159636, y: 0.5881514, z: 15.620792}
+  m_LocalPosition: {x: 0.78157395, y: 0.5881514, z: 15.620792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18777,6 +18799,7 @@ GameObject:
   - component: {fileID: 7551444877195828467}
   - component: {fileID: 6873553570465862486}
   - component: {fileID: 8684967340127594396}
+  - component: {fileID: 8684967340127594397}
   m_Layer: 3
   m_Name: Arena
   m_TagString: Untagged
@@ -19436,6 +19459,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8684967340127594397
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171929320196343369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4905629310756877741, guid: 2a7d4e8ec3ab49a4f9bddd0ae357472e, type: 3}
 --- !u!330 &8692600765706686782
 ParticleSystemForceField:
   m_ObjectHideFlags: 0

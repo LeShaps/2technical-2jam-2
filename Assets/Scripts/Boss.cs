@@ -58,8 +58,8 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        timeSinceLastPattern += Time.deltaTime;
         // Patterns switch
+        timeSinceLastPattern += Time.deltaTime;
         if (timeSinceLastPattern >= _patternDuration)
         {
             timeSinceLastPattern = 0;
@@ -70,7 +70,7 @@ public class Boss : MonoBehaviour
         
         if (CurrentPattern == Pattern.PingPongSingleOrb)
         {
-            // Movement ping pong & rotation
+            // Movement ping pong
             if (_splineTravelTime <= _splineTravelDuration)
             {
                 _splineTravelTime += Time.deltaTime;
@@ -78,8 +78,9 @@ public class Boss : MonoBehaviour
                 t = _goesUpSpline ? t : 1-t;
                 _splineContainer.Evaluate(t, out var position, out var tangent, out var normal);
                 transform.position = new Vector3(position.x, transform.position.y, position.z);
-                Quaternion splineNextRot = _goesUpSpline ? Quaternion.LookRotation(tangent) : Quaternion.LookRotation(-tangent);
-                transform.rotation = Quaternion.Lerp(transform.rotation, splineNextRot, t);
+                // Quaternion splineNextRot = _goesUpSpline ? Quaternion.LookRotation(tangent) : Quaternion.LookRotation(-tangent);
+                // transform.rotation = Quaternion.Lerp(transform.rotation, splineNextRot, t);
+                // RotateToActivePlayer();
             }
             else
             {
@@ -93,15 +94,14 @@ public class Boss : MonoBehaviour
             {
                 _singleOrbTimer = _singleOrbPace;
                 
-                float orbSpawnDistance = 1.1f;
                 Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
                 Vector3 spawnPos = transform.position;
                 spawnPos.y = _orbSpawnHeight;
                 Vector3 spawnDir = (playerPos - spawnPos).normalized;
-                spawnPos = spawnDir * orbSpawnDistance;
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(spawnDir), Time.deltaTime);
-                SpawnOrb(spawnPos, spawnDir, _singleOrbSpeed, _singleOrbDuration);
+                // float orbSpawnDistance = 1.1f;
+                // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(spawnDir), Time.deltaTime);
+                // SpawnOrb(spawnPos + spawnDir * orbSpawnDistance, spawnDir, _singleOrbSpeed, _singleOrbDuration);
             }
         }
 
@@ -115,11 +115,7 @@ public class Boss : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * _moveSpeed);
                 return;
             }
-            Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
-            Vector3 bossPos = transform.position;
-            bossPos.y = playerPos.y;
-            Vector3 lookPlayerDir = (playerPos - bossPos).normalized;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayerDir), Time.deltaTime);
+            // RotateToActivePlayer();
 
             // Orb Waves
             _circleOrbsTimer -= Time.deltaTime;
@@ -142,12 +138,22 @@ public class Boss : MonoBehaviour
                     spawnPos = spawnPos * _circleOrbLaunchRadius + transform.position;
                     var spawnDir = (spawnPos - transform.position).normalized;
                     spawnPos.y = _orbSpawnHeight;
-                    // TODO: create variation (spawn and )
+                    // TODO: create variation (spawn offset)
                     SpawnOrb(spawnPos, spawnDir, _circleOrbSpeed, _circleOrbDuration);
                 }
                 // TODO: orb goes then comes back to the wizard
             }
         }
+        RotateToActivePlayer();
+    }
+
+    void RotateToActivePlayer()
+    {
+        Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
+        Vector3 bossPos = transform.position;
+        bossPos.y = playerPos.y;
+        Vector3 lookPlayerDir = (playerPos - bossPos).normalized;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayerDir), Time.deltaTime);
     }
 
     private void SpawnOrb(Vector3 spawnPos, Vector3 spawnDir, float startSpeed, float lifeDuration)

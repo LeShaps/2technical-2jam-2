@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2697917580262287328}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 908522099310631129}
   - component: {fileID: 5120777987694283255}
   - component: {fileID: 821539040424135296}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4104718736515339020}
   - component: {fileID: 4503052713486696503}
   - component: {fileID: 4795359877817946107}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring-inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 5526359782051699179}
   - component: {fileID: 7739174932041583126}
   - component: {fileID: 976384272132560765}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2916221103603537374}
   - component: {fileID: 1605190219412178950}
   - component: {fileID: 1135540352274344735}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Boss Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 1940893883237048251}
   - component: {fileID: 4486079599346636516}
   - component: {fileID: 288601781016718756}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Orb Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 8345287797336805019}
   - component: {fileID: 520081348137468041}
   - component: {fileID: 5625289633969971112}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: purple front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 4272934944613643953}
   - component: {fileID: 3682506822794484102}
   - component: {fileID: 1295849530735216471}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 6357996443232458749}
   - component: {fileID: 5735301164449094417}
   - component: {fileID: 4490598213897295953}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring-inner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 5055898116001706480}
   - component: {fileID: 5487813912764704685}
   - component: {fileID: 3382191369545311286}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 6169921348451941755}
   - component: {fileID: 3362085973996629469}
   - component: {fileID: 4333533371956973496}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ring-inner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,7 +917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2304046140378311756}
   - component: {fileID: 1676179893463451297}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
