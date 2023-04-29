@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -49,6 +50,7 @@ public class SoundManager : MonoBehaviour
     {
         Source.clip = _audioLabels.Where(x => x.Label == Label).FirstOrDefault().Audio;
         Source.volume = volume;
+        Source.spatialBlend = 0.7f;
         Source.spatialize = true;
         Source.Play();
     }
@@ -56,6 +58,8 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundLocalized(string Label, string Source, float volume = 1f) {
         var source = _sources.Where(x => x.Label.Equals(Label)).FirstOrDefault().Source;
         source.clip = _audioLabels.Where(x => x.Label == Label).FirstOrDefault().Audio;
+        source.spatialBlend = 0.7f;
+        source.spatialize = true;
         source.volume = volume;
         source.Play();
     }
