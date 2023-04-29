@@ -50,6 +50,19 @@ public class UltimateLoad : MonoBehaviour
         }
     }
 
+    public void LooseCharge(int amount, bool yin)
+    {
+        if (yin) {
+            _yinFill -= amount;
+            if (_yinFill < 0) _yinFill = 0;
+            _yinSlider.value = _yinFill;
+        } else {
+            _yangFill -= amount;
+            if (_yangFill < 0) _yangFill = 0;
+            _yangSlider.value = _yangFill;
+        }
+    }
+
     public void AddYinCharge()
     {
         if (_yinFill < 100)

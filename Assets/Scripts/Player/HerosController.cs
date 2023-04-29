@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +10,7 @@ public class HerosController : MonoBehaviour
 
     private float _refillCharge;
     private bool _isRefilling = false;
+    private bool _isShieldActive = false;
 
     private void Update() {
         if (_isRefilling) {
