@@ -8,15 +8,14 @@ public class EndZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        // if (!UltimateLoad.Instance.UltimateReady)
-        //     return;
+        if (!UltimateLoad.Instance.UltimateReady)
+            return;
         
         PlayerController player;
         if (collider.gameObject.Contains(out player))
         {
             if (IsYinZone && player.CompareTag("Yin") || !IsYinZone && player.CompareTag("Yang"))
             {
-                Debug.Log(IsYinZone ? "Yin ready" : "Yang ready");
                 Activated = true;
             }
         }

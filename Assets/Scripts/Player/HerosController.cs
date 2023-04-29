@@ -30,6 +30,8 @@ public class HerosController : MonoBehaviour
         {
             _yinWaterShield.Desactivate();
         }
+
+        SoundManager.GetInstance().Blend("Music1", "Music2", 3f);
     }
 
     public void OnMove(InputValue value)

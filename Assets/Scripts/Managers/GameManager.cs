@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
         ActivePlayerController = _yinController;
         
         ChangeState(GameState.Starting);
+        SoundManager.GetInstance().StartLoop("Music1", "Yin", 1);
+        SoundManager.GetInstance().StartLoop("Music2", "Yang", 0);
     }
 
     public void ChangeState(GameState newState)

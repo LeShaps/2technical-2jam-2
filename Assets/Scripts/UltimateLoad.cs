@@ -13,6 +13,9 @@ public class UltimateLoad : MonoBehaviour
     [SerializeField] private Slider _yinSlider;
     [SerializeField] private Slider _yangSlider;
     [SerializeField] private RawImage _ultimateImage;
+    [SerializeField] private GameObject _yinChargeImage;
+    [SerializeField] private GameObject _yangChargeImage;
+
     private float _yinFill = 0f;
     private float _yangFill = 0f;
     public bool UltimateReady { get; private set; }
@@ -72,6 +75,7 @@ public class UltimateLoad : MonoBehaviour
             if (_yinFill >= 100) {
                 _textInfo.alpha = 1f;
                 _textInfo.text = "Yin is charged";
+                _yinChargeImage.SetActive(true);
                 StartCoroutine(FadeText());
                 CheckFullCharge();
             }
@@ -87,6 +91,7 @@ public class UltimateLoad : MonoBehaviour
             {
                 _textInfo.alpha = 1f;
                 _textInfo.text = "Yang is charged";
+                _yangChargeImage.SetActive(true);
                 StartCoroutine(FadeText());
                 CheckFullCharge();
             }
