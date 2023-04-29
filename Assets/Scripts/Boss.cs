@@ -5,9 +5,12 @@ using UnityEngine.Splines;
 public class Boss : MonoBehaviour
 {
     [SerializeField] private GameObject _orbPrefab;
-    [SerializeField] float _timeBetweenOrbFire = 1f;
-    [SerializeField] float _weakPointMaxDistance = 1f;
+    [SerializeField] float _singleOrbPace = 1f;
+    [SerializeField] float _singleOrbSpeed = 200f;
+    [SerializeField] float _singleOrbDuration = 2f; // try to optimize by set the minimim duration needed
+
     [SerializeField] Transform _weakPointTransform;
+    [SerializeField] float _weakPointMaxDistance = 1f;
     [SerializeField] SplineContainer _splineContainer;
     private Spline _splines;
     private float _fireOrbTimer;
@@ -60,13 +63,14 @@ public class Boss : MonoBehaviour
         _fireOrbTimer -= Time.deltaTime;
         if (_fireOrbTimer < 0)
         {
-            _fireOrbTimer = _timeBetweenOrbFire;
+            _fireOrbTimer = _singleOrbPace;
             Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
             Vector3 orbDir = (playerPos - transform.position).normalized;
             Quaternion rota = Quaternion.LookRotation(orbDir);
             transform.rotation = rota;
             var go = Instantiate(_orbPrefab, transform.position + (transform.forward * 1.1f), rota);
-            Destroy(go, 1.5f);
+            go.GetComponent<Projectile>().Speed = _singleOrbSpeed;
+            Destroy(go, _singleOrbDuration);
         }
     }
 
