@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerController _yangController;
     [SerializeField] private PlayerController _yinController;
+    [SerializeField] private PlayerController _yangController;
     public Player ActivePlayer { get; set; }
     public PlayerController ActivePlayerController { get; set; }
 
@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _yinController.Player = Player.Yin;
+        _yangController.Player = Player.Yang;
         ActivePlayer = Player.Yin;
         ActivePlayerController = _yinController;
         

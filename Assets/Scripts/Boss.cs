@@ -46,9 +46,9 @@ public class Boss : MonoBehaviour
             float t = Mathf.Lerp(0, 1f, currentTime / timeToMove);
             t = _faceForward ? t : 1-t;
             _splineContainer.Evaluate(t, out var position, out var tangent, out var normal);
-            transform.position = new Vector3(position.x, transform.position.y, position.z);
+            // transform.position = new Vector3(position.x, transform.position.y, position.z);
             Quaternion splineNextRot = _faceForward ? Quaternion.LookRotation(tangent) : Quaternion.LookRotation(-tangent);
-            transform.rotation = Quaternion.Lerp(transform.rotation, splineNextRot, t);
+            // transform.rotation = Quaternion.Lerp(transform.rotation, splineNextRot, t);
         }
         else
         {
@@ -62,7 +62,10 @@ public class Boss : MonoBehaviour
         {
             _fireOrbTimer = _timeBetweenOrbFire;
             Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
-            var go = Instantiate(_orbPrefab, transform.position + (transform.forward * 1.1f), Quaternion.LookRotation(playerPos));
+            Vector3 orbDir = (playerPos - transform.position).normalized;
+            Quaternion rota = Quaternion.LookRotation(orbDir);
+            transform.rotation = rota;
+            var go = Instantiate(_orbPrefab, transform.position + (transform.forward * 1.1f), rota);
             Destroy(go, 1.5f);
         }
     }

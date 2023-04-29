@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInfo _playerInfo;
     [SerializeField] private Transform _fireballLaunchTransform;
 
-    [HideInInspector] public bool IsActiveCharacter;
+    [HideInInspector] public Player Player { get; set; }
     [HideInInspector] public Vector2 Move { get; set; }
  
     private Vector3 _moveDir = Vector3.zero;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsActiveCharacter)
+        if (Player == GameManager.Instance.ActivePlayer)
         {
             float movementDirectionY = _moveDir.y;
             bool isRunning = false;

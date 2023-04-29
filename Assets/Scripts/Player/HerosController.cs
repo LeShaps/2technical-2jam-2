@@ -37,14 +37,7 @@ public class HerosController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        if (GameManager.Instance.ActivePlayer == Player.Yang)
-        {
-            GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
-        }
-        else
-        {
-            GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
-        }
+        GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
     }
 
     public void OnFire(InputValue value)
