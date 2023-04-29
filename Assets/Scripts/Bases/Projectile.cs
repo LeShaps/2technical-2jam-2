@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed = 150f;
     private Rigidbody _rb;
 
-    private void Start() {
+    private void Start()
+    {
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _rb.velocity = _speed * transform.forward;
