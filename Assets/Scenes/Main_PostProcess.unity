@@ -4853,6 +4853,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7414328669737354329, guid: 6397f7d2878a2f047bfafc78a79dd302,
+        type: 3}
+      propertyPath: shadowcolor.b
+      value: 0.009433985
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414328669737354329, guid: 6397f7d2878a2f047bfafc78a79dd302,
+        type: 3}
+      propertyPath: shadowcolor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414328669737354329, guid: 6397f7d2878a2f047bfafc78a79dd302,
+        type: 3}
+      propertyPath: shadowcolor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7513441554984730835, guid: 6397f7d2878a2f047bfafc78a79dd302,
         type: 3}
       propertyPath: m_Name
@@ -4861,11 +4876,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7513441554984730835, guid: 6397f7d2878a2f047bfafc78a79dd302,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2008773469}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6397f7d2878a2f047bfafc78a79dd302, type: 3}
 --- !u!4 &2008773467 stripped
 Transform:
@@ -4873,26 +4884,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2008773466}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2008773468 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7513441554984730835, guid: 6397f7d2878a2f047bfafc78a79dd302,
-    type: 3}
-  m_PrefabInstance: {fileID: 2008773466}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2008773469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008773468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ab93551eb9ab74abdf6cb22b73922f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  celshadeGradient: {fileID: 2800000, guid: f061bf19f50bd05498a1186ed990bb25, type: 3}
-  shadowcolor: {r: 0, g: 0, b: 0.015686275, a: 1}
 --- !u!1 &2011135406
 GameObject:
   m_ObjectHideFlags: 0
