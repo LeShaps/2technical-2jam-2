@@ -13,7 +13,6 @@ public class Fireball : Projectile
     void OnCollisionEnter(Collision collision) 
     {
         ContactPoint contact = collision.contacts[0];
-
         Boss bossCharacter;
         if (collision.gameObject.Contains(out bossCharacter))
         {
