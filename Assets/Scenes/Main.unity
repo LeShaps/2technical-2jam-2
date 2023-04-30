@@ -1432,9 +1432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _yinChargeAmount: 2
-  _yangChargeAmount: 5
+  _yangChargeAmount: 6
   _loseChargeAmount: 7
-  _yangCriticalChargeAmount: 6
+  _yangCriticalChargeAmount: 15
   _textInfo: {fileID: 953286054}
   _yinSlider: {fileID: 1190329290}
   _yangSlider: {fileID: 450871212}
@@ -1672,7 +1672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8195327, y: 0.58815116, z: -22.898829}
+  m_LocalPosition: {x: 0.71850604, y: 0.58815116, z: -22.899836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4389,7 +4389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 1.324904, y: 0.92609733, z: -24.834526}
+  m_LocalPosition: {x: 1.173806, y: 0.9321244, z: -24.870644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
