@@ -62,5 +62,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ab93551eb9ab74abdf6cb22b73922f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  celshadeGradient: {fileID: 2800000, guid: f061bf19f50bd05498a1186ed990bb25, type: 3}
-  shadowcolor: {r: 0, g: 0, b: 0.015686275, a: 1}
+  celshadeGradient: {fileID: 2800000, guid: 137b62cd9a2cff140ba00cd6492c3b0c, type: 3}
+  shadowcolor: {r: 0, g: 0, b: 0.028301895, a: 1}
