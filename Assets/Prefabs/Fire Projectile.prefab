@@ -4838,9 +4838,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5350208535210152678}
-  - component: {fileID: 2532413281496279376}
-  - component: {fileID: 5975437598496721529}
   - component: {fileID: 5654766671928483912}
+  - component: {fileID: 5975437598496721529}
+  - component: {fileID: 2532413281496279376}
   - component: {fileID: 6798458939750226785}
   m_Layer: 9
   m_Name: Fire Projectile
@@ -4857,7 +4857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112512059685295875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.369, y: 0.754, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4865,27 +4865,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2532413281496279376
-SphereCollider:
+--- !u!114 &5654766671928483912
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112512059685295875}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0.4}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722ccaeb5f28dc24389669d211c418d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 210
+  _hitSmallVFX: {fileID: 433394200141931375, guid: 848ee413631aadf4cb9db1d59c52ad27,
+    type: 3}
+  _hitLargeVFX: {fileID: 5192573884772788685, guid: 0bca74a93850be748a66f3c97551df87,
+    type: 3}
 --- !u!54 &5975437598496721529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4913,23 +4909,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &5654766671928483912
-MonoBehaviour:
+--- !u!135 &2532413281496279376
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112512059685295875}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 722ccaeb5f28dc24389669d211c418d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 210
-  _hitSmallVFX: {fileID: 433394200141931375, guid: 848ee413631aadf4cb9db1d59c52ad27,
-    type: 3}
-  _hitLargeVFX: {fileID: 5192573884772788685, guid: 0bca74a93850be748a66f3c97551df87,
-    type: 3}
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!82 &6798458939750226785
 AudioSource:
   m_ObjectHideFlags: 0

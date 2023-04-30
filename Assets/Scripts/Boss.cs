@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
 using static UnityEngine.Mathf;
@@ -93,12 +92,14 @@ public class Boss : MonoBehaviour
             {
                 _singleOrbTimer = _singleOrbPace;
                 
-                Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
                 Vector3 spawnPos = transform.position;
                 spawnPos.y = _orbSpawnHeight;
+                Vector3 playerPos = GameManager.Instance.ActivePlayerController.transform.position;
+                playerPos.y = _orbSpawnHeight;
                 Vector3 spawnDir = (playerPos - spawnPos).normalized;
-                float orbSpawnDistance = 1.1f;
-                SpawnOrb(spawnPos + spawnDir * orbSpawnDistance, spawnDir, _singleOrbSpeed, _singleOrbDuration);
+                Vector3 spawnDirOffset = spawnPos + (spawnDir * 1.1f);
+
+                SpawnOrb(spawnDirOffset, spawnDir, _singleOrbSpeed, _singleOrbDuration);
                 // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(spawnDir), Time.deltaTime);
             }
         }
@@ -133,7 +134,7 @@ public class Boss : MonoBehaviour
                     float u = (x + 0.5f) * step - 1f;
                     
                     var spawnPos = Sphere(u, v);
-                    spawnPos = spawnPos * _circleOrbLaunchRadius + transform.position;
+                    spawnPos = transform.position + (spawnPos * _circleOrbLaunchRadius);
                     var spawnDir = (spawnPos - transform.position).normalized;
                     spawnPos.y = _orbSpawnHeight;
                     // TODO: create variation (spawn offset and projectiles movements)
@@ -154,11 +155,11 @@ public class Boss : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayerDir), Time.deltaTime);
     }
 
-    private void SpawnOrb(Vector3 spawnPos, Vector3 spawnDir, float startSpeed, float lifeDuration)
+    private void SpawnOrb(Vector3 spawnPos, Vector3 spawnDir, float startSpeed, float lifeTime)
     {
         var go = Instantiate(_orbPrefab, spawnPos, Quaternion.LookRotation(spawnDir), _projectilesParentTransform);
         go.GetComponent<Projectile>().Speed = startSpeed;
-        Destroy(go, lifeDuration);
+        Destroy(go, lifeTime);
     }
 
     Vector3 Sphere(float u, float v)
