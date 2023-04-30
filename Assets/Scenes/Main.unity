@@ -1190,8 +1190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f2f8af0d2e2ca44981bcad0e24fcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yinChargeAmount: 10
-  _yangChargeAmount: 10
+  _yinChargeAmount: 3
+  _yangChargeAmount: 3
   _loseChargeAmount: 5
   _yangCriticalChargeAmount: 20
   _textInfo: {fileID: 953286054}
@@ -2138,6 +2138,12 @@ PositionConstraint:
   m_Sources:
   - sourceTransform: {fileID: 2011135407}
     weight: 1
+--- !u!1 &1168131170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7556893109186872163, guid: c204782120b72254081d319d1f5d7ba4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2238757582744821471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1190329290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1439885964149181937, guid: f5cc7588741fbbf4eb475c198137be0e,
@@ -4980,6 +4986,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 558588128}
     m_Modifications:
+    - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
+        type: 3}
+      propertyPath: _weakPoint
+      value: 
+      objectReference: {fileID: 1168131170}
+    - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
+        type: 3}
+      propertyPath: _ultimateVcam
+      value: 
+      objectReference: {fileID: 1533990524}
+    - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
+        type: 3}
+      propertyPath: _bossHitParticle
+      value: 
+      objectReference: {fileID: 3398034184122289292, guid: 8dfc664a7dae8fe4fa82db2d1ff4298d,
+        type: 3}
     - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
         type: 3}
       propertyPath: _splineContainer

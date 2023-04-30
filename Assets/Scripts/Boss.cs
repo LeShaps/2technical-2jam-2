@@ -36,7 +36,8 @@ public class Boss : MonoBehaviour
     public Pattern CurrentPattern { get; private set; }
     
     [SerializeField] GameObject _shieldPrefab;
-    
+    [SerializeField] ParticleSystem _bossHitParticle;
+
     public static Boss Instance { get; set; }
     void Awake() => Instance = this;
 
@@ -71,11 +72,14 @@ public class Boss : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * _moveSpeed);
                 return;
             }
+            transform.rotation = Quaternion.LookRotation(Vector3.forward);
 
             // Play Ultimate
+            if (_ultimateVcam.activeInHierarchy)
+                return;
+                
             _ultimateVcam.SetActive(true);
             StartCoroutine(Ultimate());
-
             return;
         }
 
@@ -171,6 +175,7 @@ public class Boss : MonoBehaviour
                 }
                 // TODO: orb goes then comes back to the wizard
             }
+            
         }
         RotateToActivePlayer();
     }
@@ -179,8 +184,20 @@ public class Boss : MonoBehaviour
 
     IEnumerator Ultimate()
     {
-        _weakPoint.transform.localScale += Vector3.one * Time.deltaTime;
         yield return new WaitForSeconds(3f);
+        while (_weakPoint.transform.localScale.x < 15f)
+        {
+            float speed = 7f;
+            Debug.Log(Vector3.one * Time.deltaTime * speed);
+            _weakPoint.transform.localScale += Vector3.one * Time.deltaTime * speed;
+            yield return null;
+        }
+        if (_weakPoint.transform.localScale.x >= 15f)
+        {
+            Instantiate(_bossHitParticle, transform.position, Quaternion.identity);
+            _bossHitParticle.Play();
+            Destroy(gameObject);
+        }
     }
 
     void RotateToActivePlayer()
