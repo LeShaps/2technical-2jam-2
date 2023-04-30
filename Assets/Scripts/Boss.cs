@@ -25,7 +25,6 @@ public class Boss : MonoBehaviour
     bool _goesUpSpline = true;
     float _splineTravelTime;
 
-    [SerializeField] Transform _weakPointTransform;
     [SerializeField] float _weakPointMaxDistance = 1f;
     [SerializeField] SplineContainer _splineContainer;
     Spline _splines;
@@ -170,12 +169,6 @@ public class Boss : MonoBehaviour
 		p.z = Cos(PI * u);
 		return p;
 	}
-
-    public bool HasHitCloseToWeakPoint(Vector3 hitPos)
-    {
-        Debug.Log((_weakPointTransform.position - hitPos).magnitude);
-        return (_weakPointTransform.position - hitPos).magnitude < _weakPointMaxDistance;
-    }
 }
 
 [Serializable]

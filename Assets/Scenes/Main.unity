@@ -1579,7 +1579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686600394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7566995, y: 0.58815116, z: -22.899456}
+  m_LocalPosition: {x: 0.7818158, y: 0.58815116, z: -22.899204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2810,7 +2810,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1450684651}
   - component: {fileID: 1450684655}
-  - component: {fileID: 1450684656}
   - component: {fileID: 1450684652}
   - component: {fileID: 1450684658}
   - component: {fileID: 1450684657}
@@ -2886,37 +2885,9 @@ MonoBehaviour:
     type: 3}
   _splineTravelDuration: 6
   _moveSpeed: 9
-  _weakPointTransform: {fileID: 3902470051866346470}
   _weakPointMaxDistance: 1.3
   _splineContainer: {fileID: 341109338}
   _patternDuration: 8
---- !u!54 &1450684656
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450684650}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1450684657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3363,7 +3334,6 @@ GameObject:
   - component: {fileID: 1606040844}
   - component: {fileID: 1606040842}
   - component: {fileID: 1606040846}
-  - component: {fileID: 1606040847}
   m_Layer: 7
   m_Name: Yang
   m_TagString: Yang
@@ -3484,18 +3454,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1606040847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606040839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 089371e3047eab240803b352d00b0f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630233150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,7 +3703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665287273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0.75, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4430,7 +4388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144785486}
   m_LocalRotation: {x: -0.21476468, y: -0.0048649786, z: -0.0010698022, w: 0.97665316}
-  m_LocalPosition: {x: 0.7566995, y: 0.58815116, z: -22.899456}
+  m_LocalPosition: {x: 0.7818158, y: 0.58815116, z: -22.899204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5173,7 +5131,7 @@ GameObject:
   - component: {fileID: 1775919633969895034}
   - component: {fileID: 1775919633969895035}
   - component: {fileID: 1775919633969895036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Yin Water Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5196,27 +5154,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &1370937001451015834
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5373048451039564945}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1415512139007963188
 Transform:
   m_ObjectHideFlags: 0
@@ -5478,7 +5415,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
@@ -6512,9 +6449,9 @@ GameObject:
   - component: {fileID: 9113477917511458698}
   - component: {fileID: 4310836301421082401}
   - component: {fileID: 666867734937045280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikey
-  m_TagString: Untagged
+  m_TagString: WeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7245,9 +7182,9 @@ GameObject:
   - component: {fileID: 809913721346297422}
   - component: {fileID: 3231776337825856132}
   - component: {fileID: 4364761718451110380}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arena
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17446,13 +17383,35 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3902470051866346470}
-  m_Layer: 0
+  - component: {fileID: 5322212451408613916}
+  m_Layer: 6
   m_Name: Weak Point
-  m_TagString: Untagged
+  m_TagString: WeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &5322212451408613916
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5322212451408613915}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5362903678121675256
 Transform:
   m_ObjectHideFlags: 0
@@ -17513,10 +17472,9 @@ GameObject:
   - component: {fileID: 3404896851462368249}
   - component: {fileID: 6158278485786270533}
   - component: {fileID: 8505954427640186418}
-  - component: {fileID: 1370937001451015834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Orb Centre_1
-  m_TagString: Untagged
+  m_TagString: WeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17881,7 +17839,7 @@ GameObject:
   - component: {fileID: 4521223686853504177}
   - component: {fileID: 5007779272996838618}
   - component: {fileID: 5837934496401262269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikey_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
