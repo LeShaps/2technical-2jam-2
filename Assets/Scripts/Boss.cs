@@ -156,6 +156,8 @@ public class Boss : MonoBehaviour
                 _circleOrbsTimer = _circleOrbsPace;
                 float step = 2f / _circleOrbsCount;
                 float v = 0.5f * step - 1f; // cover the -1/-1 range instead of 0/2
+                changeDir = !changeDir;
+                float offset = changeDir ? TOTO : 0f;
                 for (int i = 0, x = 0, z = 0; i < _circleOrbsCount; i++, x++)
                 {
                     if (x == _circleOrbsCount)
@@ -166,7 +168,7 @@ public class Boss : MonoBehaviour
                     }
                     float u = (x + 0.5f) * step - 1f;
                     
-                    var spawnPos = Sphere(u, v);
+                    var spawnPos = Sphere(u, v, offset);
                     spawnPos = transform.position + (spawnPos * _circleOrbLaunchRadius);
                     var spawnDir = (spawnPos - transform.position).normalized;
                     spawnPos.y = _orbSpawnHeight;
@@ -223,13 +225,15 @@ public class Boss : MonoBehaviour
         var go = Instantiate(_shieldPrefab, spawnPos, Quaternion.LookRotation(spawnDir), _projectilesParentTransform);
         Destroy(go, lifeTime);
     }
+    bool changeDir = true;
+    public float TOTO = 1f;
 
-    Vector3 Sphere(float u, float v)
+    Vector3 Sphere(float u, float v, float offset)
     {
 		Vector3 p;
-		p.x = Sin(PI * u);
+		p.x = Sin(PI * u + offset);
 		p.y = 0f;
-		p.z = Cos(PI * u);
+		p.z = Cos(PI * u + offset);
 		return p;
 	}
 }

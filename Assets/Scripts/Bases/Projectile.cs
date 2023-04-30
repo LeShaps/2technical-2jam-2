@@ -4,13 +4,13 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float _speed = 150f;
-    Rigidbody _rb;
+    protected Rigidbody rb;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        _rb.useGravity = false;
-        _rb.velocity = _speed * transform.forward;
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.velocity = _speed * transform.forward;  
     }
 
     public float Speed

@@ -1431,9 +1431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f2f8af0d2e2ca44981bcad0e24fcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yinChargeAmount: 4
+  _yinChargeAmount: 2
   _yangChargeAmount: 3
-  _loseChargeAmount: 3
+  _loseChargeAmount: 9
   _yangCriticalChargeAmount: 6
   _textInfo: {fileID: 953286054}
   _yinSlider: {fileID: 1190329290}
@@ -5882,6 +5882,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
         type: 3}
+      propertyPath: TOTO
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
+        type: 3}
       propertyPath: _ultimateVcam
       value: 
       objectReference: {fileID: 1533990524}
@@ -5890,6 +5895,11 @@ PrefabInstance:
       propertyPath: _splineContainer
       value: 
       objectReference: {fileID: 341109338}
+    - target: {fileID: 4420860505589266577, guid: c204782120b72254081d319d1f5d7ba4,
+        type: 3}
+      propertyPath: _splineTravelDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7930111690180963537, guid: c204782120b72254081d319d1f5d7ba4,
         type: 3}
       propertyPath: m_Name
