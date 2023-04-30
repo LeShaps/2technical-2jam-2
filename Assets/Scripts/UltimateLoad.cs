@@ -13,7 +13,8 @@ public class UltimateLoad : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textInfo;
     [SerializeField] private Slider _yinSlider;
     [SerializeField] private Slider _yangSlider;
-    [SerializeField] private RawImage _ultimateImage;
+    [SerializeField] private RawImage _yinUltimateImage;
+    [SerializeField] private RawImage _yangUltimateImage;
     [SerializeField] private GameObject _yinChargeImage;
     [SerializeField] private GameObject _yangChargeImage;
 
@@ -48,14 +49,20 @@ public class UltimateLoad : MonoBehaviour
             _textInfo.text = "The ultimate is ready!";
             // StartCoroutine(FadeText());
 
-            GameManager.Instance.ChangeState(GameState.Win);
-            
-            _ultimateImage.color = new Color {
-                r = _ultimateImage.color.r,
-                g = _ultimateImage.color.g,
-                b = _ultimateImage.color.b,
-                a = 100
+            _yinUltimateImage.color = new Color {
+                r = _yinUltimateImage.color.r,
+                g = _yinUltimateImage.color.g,
+                b = _yinUltimateImage.color.b,
+                a = 0
             };
+            _yangUltimateImage.color = new Color {
+                r = _yangUltimateImage.color.r,
+                g = _yangUltimateImage.color.g,
+                b = _yangUltimateImage.color.b,
+                a = 0
+            };
+
+            GameManager.Instance.ChangeState(GameState.Win);
 
             // GameManager.Instance.ChangeState(GameState.UltimateReady);
             GameManager.Instance.ChangeState(GameState.Win);
@@ -92,7 +99,13 @@ public class UltimateLoad : MonoBehaviour
             _yinSlider.value = _yinFill;
             if (_yinFill >= 100) {
                 _textInfo.alpha = 1f;
-                _textInfo.text = "Yin is charged";
+                _yinUltimateImage.color = new Color {
+                    r = _yinUltimateImage.color.r,
+                    g = _yinUltimateImage.color.g,
+                    b = _yinUltimateImage.color.b,
+                    a = 100
+                };
+                // _textInfo.text = "Yin is charged";
                 _yinChargeImage.SetActive(true);
                 StartCoroutine(FadeText());
                 CheckFullCharge();
@@ -108,7 +121,13 @@ public class UltimateLoad : MonoBehaviour
             if (_yangFill >= 100)
             {
                 _textInfo.alpha = 1f;
-                _textInfo.text = "Yang is charged";
+                _yangUltimateImage.color = new Color {
+                    r = _yangUltimateImage.color.r,
+                    g = _yangUltimateImage.color.g,
+                    b = _yangUltimateImage.color.b,
+                    a = 100
+                };
+                // _textInfo.text = "Yang is charged";
                 _yangChargeImage.SetActive(true);
                 StartCoroutine(FadeText());
                 CheckFullCharge();
