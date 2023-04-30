@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +41,11 @@ public class UltimateLoad : MonoBehaviour
     //     }
     // }
 
+    void Update()
+    {
+        CheckFullCharge();
+    }
+
     private void CheckFullCharge()
     {
         if (_yinFill >= 100 &&  _yangFill >= 100) {
@@ -61,10 +65,6 @@ public class UltimateLoad : MonoBehaviour
                 b = _yangUltimateImage.color.b,
                 a = 0
             };
-
-            GameManager.Instance.ChangeState(GameState.Win);
-
-            // GameManager.Instance.ChangeState(GameState.UltimateReady);
             GameManager.Instance.ChangeState(GameState.Win);
         }
     }
@@ -97,19 +97,19 @@ public class UltimateLoad : MonoBehaviour
         {
             _yinFill += _yinChargeAmount;
             _yinSlider.value = _yinFill;
-            if (_yinFill >= 100) {
-                _textInfo.alpha = 1f;
-                _yinUltimateImage.color = new Color {
-                    r = _yinUltimateImage.color.r,
-                    g = _yinUltimateImage.color.g,
-                    b = _yinUltimateImage.color.b,
-                    a = 100
-                };
-                // _textInfo.text = "Yin is charged";
-                _yinChargeImage.SetActive(true);
-                StartCoroutine(FadeText());
-                CheckFullCharge();
-            }
+        }
+        if (_yinFill >= 100) {
+            _textInfo.alpha = 1f;
+            _yinUltimateImage.color = new Color {
+                r = _yinUltimateImage.color.r,
+                g = _yinUltimateImage.color.g,
+                b = _yinUltimateImage.color.b,
+                a = 100
+            };
+            // _textInfo.text = "Yin is charged";
+            _yinChargeImage.SetActive(true);
+            // StartCoroutine(FadeText());
+            // CheckFullCharge();
         }
     }
 
@@ -118,27 +118,27 @@ public class UltimateLoad : MonoBehaviour
         if (_yangFill < 100) {
             _yangFill += isCritical ? _yangCriticalChargeAmount : _yangChargeAmount;
             _yangSlider.value = _yangFill;
-            if (_yangFill >= 100)
-            {
-                _textInfo.alpha = 1f;
-                _yangUltimateImage.color = new Color {
-                    r = _yangUltimateImage.color.r,
-                    g = _yangUltimateImage.color.g,
-                    b = _yangUltimateImage.color.b,
-                    a = 100
-                };
-                // _textInfo.text = "Yang is charged";
-                _yangChargeImage.SetActive(true);
-                StartCoroutine(FadeText());
-                CheckFullCharge();
-            }
+        }
+        if (_yangFill >= 100)
+        {
+            _textInfo.alpha = 1f;
+            _yangUltimateImage.color = new Color {
+                r = _yangUltimateImage.color.r,
+                g = _yangUltimateImage.color.g,
+                b = _yangUltimateImage.color.b,
+                a = 100
+            };
+            // _textInfo.text = "Yang is charged";
+            _yangChargeImage.SetActive(true);
+            // StartCoroutine(FadeText());
+            // CheckFullCharge();
         }
     }
 
-    public IEnumerator FadeText() {
-        while (_textInfo.alpha > 0) {
-            _textInfo.alpha -= (Time.deltaTime / 2);
-            yield return null;
-        }
-    }
+    // public IEnumerator FadeText() {
+    //     while (_textInfo.alpha > 0) {
+    //         _textInfo.alpha -= (Time.deltaTime / 2);
+    //         yield return null;
+    //     }
+    // }
 }

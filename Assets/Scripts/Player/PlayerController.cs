@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private CharacterController _cc;
     
     Animator _animator;
-    bool _isRunning = false;
 
     private void Awake()
     {

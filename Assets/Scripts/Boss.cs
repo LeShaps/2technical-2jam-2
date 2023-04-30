@@ -25,9 +25,7 @@ public class Boss : MonoBehaviour
     bool _goesUpSpline = true;
     float _splineTravelTime;
 
-    [SerializeField] float _weakPointMaxDistance = 1f;
     [SerializeField] SplineContainer _splineContainer;
-    Spline _splines;
 
     [SerializeField] private GameObject _ultimateVcam;
 
@@ -54,15 +52,17 @@ public class Boss : MonoBehaviour
 
     Pattern NextPattern()
     {
+        if (GameManager.Instance.State == GameState.Win)
+            return Pattern.None;
         if (CurrentPattern == Pattern.PingPongSingleOrb)
             return Pattern.CenterOrbWaves;
-        else
-            return Pattern.PingPongSingleOrb;
+
+        return Pattern.PingPongSingleOrb;
     }
 
     void Update()
     {
-        if (CurrentPattern == Pattern.None)
+        if (GameManager.Instance.State == GameState.Win || CurrentPattern == Pattern.None)
         {
             // Move to center
             var nextPos = _splineContainer.EvaluatePosition(0.5f);
@@ -184,18 +184,20 @@ public class Boss : MonoBehaviour
 
     IEnumerator Ultimate()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         while (_weakPoint.transform.localScale.x < 15f)
         {
-            float speed = 7f;
-            Debug.Log(Vector3.one * Time.deltaTime * speed);
-            _weakPoint.transform.localScale += Vector3.one * Time.deltaTime * speed;
+            float growSpeed = 5f;
+            _weakPoint.transform.localScale += Vector3.one * Time.deltaTime * growSpeed;
             yield return null;
         }
         if (_weakPoint.transform.localScale.x >= 15f)
         {
+            Destroy(_weakPoint);
             Instantiate(_bossHitParticle, transform.position, Quaternion.identity);
             _bossHitParticle.Play();
+            yield return new WaitForSeconds(.2f);
+            GameManager.Instance.ChangeState(GameState.End);
             Destroy(gameObject);
         }
     }

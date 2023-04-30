@@ -5848,13 +5848,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _singleOrbPace: 1.5
-  _singleOrbSpeed: 50
-  _singleOrbDuration: 3
+  _singleOrbSpeed: 70
+  _singleOrbDuration: 5
   _circleOrbsPace: 0.4
   _circleOrbSpeed: 12
-  _circleOrbDuration: 2
+  _circleOrbDuration: 5
   _circleOrbLaunchRadius: 2.5
-  _circleOrbsCount: 10
+  _circleOrbsCount: 30
   _orbSpawnHeight: 1.2
   _orbPrefab: {fileID: 5360143799700580182, guid: a9fc02ad94a6b9a47b8691db8607a250,
     type: 3}
@@ -5866,7 +5866,9 @@ MonoBehaviour:
   _patternDuration: 6
   _shieldPrefab: {fileID: 4479288100133332176, guid: 64132c8f354438a47969ba3d40a318cb,
     type: 3}
-  _weakPoint: {fileID: 0}
+  _bossHitParticle: {fileID: 3398034184122289292, guid: 8dfc664a7dae8fe4fa82db2d1ff4298d,
+    type: 3}
+  _weakPoint: {fileID: 7556893109186872163}
 --- !u!136 &7374791263209090130
 CapsuleCollider:
   m_ObjectHideFlags: 0

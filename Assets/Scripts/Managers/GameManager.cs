@@ -1,8 +1,15 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _yangReticleCanvas;
+    [SerializeField] private GameObject _athCanvas;
+    [SerializeField] private TextMeshProUGUI _timeScoreText;
+    [SerializeField] private GameObject _quitButton;
+
     [SerializeField] private PlayerController _yinController;
     [SerializeField] private PlayerController _yangController;
     public Player ActivePlayer { get; set; }
@@ -46,6 +53,9 @@ public class GameManager : MonoBehaviour
             case GameState.Win:
                 HandleWin();
                 break;
+            case GameState.End:
+                HandleEnd();
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
@@ -85,8 +95,24 @@ public class GameManager : MonoBehaviour
 
     private void HandleWin()
     {
-        Debug.Log("============================== WIN");
+        _yangReticleCanvas.SetActive(false);
+        _athCanvas.SetActive(false);
         Boss.Instance.StopPatterns();
+    }
+
+    private void HandleEnd()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        _quitButton.SetActive(true);
+        double timeScore = (Mathf.Round(Time.timeSinceLevelLoad * 100)) / 100.0;
+        _timeScoreText.text = $"Time : {timeScore}s";
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("QuitGame()");
     }
 }
 
@@ -97,6 +123,7 @@ public enum GameState
     BossPatterns = 1,
     UltimateReady = 2,
     Win = 3,
+    End = 4,
 }
 
 [Serializable]
