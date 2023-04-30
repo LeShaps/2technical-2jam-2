@@ -9,50 +9,23 @@ public class UltimateLoad : MonoBehaviour
     [SerializeField] int _loseChargeAmount = 5;
 
     [SerializeField] int _yangCriticalChargeAmount = 20;
-    [SerializeField] private TextMeshProUGUI _textInfo;
-    [SerializeField] private Slider _yinSlider;
-    [SerializeField] private Slider _yangSlider;
-    [SerializeField] private RawImage _yinUltimateImage;
-    [SerializeField] private RawImage _yangUltimateImage;
-    [SerializeField] private GameObject _yinChargeImage;
-    [SerializeField] private GameObject _yangChargeImage;
+    [SerializeField] Slider _yinSlider;
+    [SerializeField] Slider _yangSlider;
+    [SerializeField] RawImage _yinUltimateImage;
+    [SerializeField] RawImage _yangUltimateImage;
+    [SerializeField] GameObject _yinChargeImage;
+    [SerializeField] GameObject _yangChargeImage;
 
-    private float _yinFill = 0f;
-    private float _yangFill = 0f;
+    float _yinFill = 0f;
+    float _yangFill = 0f;
     public static UltimateLoad Instance { get; private set; }
 
     void Awake() => Instance = this;
 
-    // public void ActivateUltimate()
-    // {
-    //     if (_yinFill < 100 || _yangFill < 100)
-    //         return;
-
-    //     else {
-    //         EndZone[] WinZones = FindObjectsOfType<EndZone>();
-    //         if (WinZones.All(x => x.Activated))
-    //         {
-    //             GameManager.Instance.ChangeState(GameState.Win);
-    //         } else {
-    //             _textInfo.alpha = 1f;
-    //             _textInfo.text = "One of the character is not on the ultimate point";
-    //             StartCoroutine(FadeText());
-    //         }
-    //     }
-    // }
-
-    void Update()
+    void CheckBothCharged()
     {
-        CheckFullCharge();
-    }
-
-    private void CheckFullCharge()
-    {
-        if (_yinFill >= 100 &&  _yangFill >= 100) {
-            _textInfo.alpha = 1f;
-            _textInfo.text = "The ultimate is ready!";
-            // StartCoroutine(FadeText());
-
+        if (_yinFill >= 100 &&  _yangFill >= 100)
+        {
             _yinUltimateImage.color = new Color {
                 r = _yinUltimateImage.color.r,
                 g = _yinUltimateImage.color.g,
@@ -74,23 +47,17 @@ public class UltimateLoad : MonoBehaviour
         if (GameManager.Instance.State == GameState.Win || GameManager.Instance.State == GameState.End)
             return;
         
-        if (yin && GameManager.Instance.ActivePlayer == Player.Yin)
+        if (yin && GameManager.Instance.ActivePlayer == Player.Yin && _yinFill < 100)
         {
-            if (GameManager.Instance.ActivePlayer == Player.Yin && _yinChargeAmount < 100)
-            {                
-                _yinFill -= _loseChargeAmount;
-                if (_yinFill < 0) _yinFill = 0;
-                _yinSlider.value = _yinFill;
-            }
+            _yinFill -= _loseChargeAmount;
+            if (_yinFill < 0) _yinFill = 0;
+            _yinSlider.value = _yinFill;
         }
-        else
+        else if (!yin && GameManager.Instance.ActivePlayer == Player.Yang && _yangFill < 100)
         {
-            if (GameManager.Instance.ActivePlayer == Player.Yang && _yangChargeAmount < 100)
-            {
-                _yangFill -= _loseChargeAmount;
-                if (_yangFill < 0) _yangFill = 0;
-                _yangSlider.value = _yangFill;
-            }
+            _yangFill -= _loseChargeAmount;
+            if (_yangFill < 0) _yangFill = 0;
+            _yangSlider.value = _yangFill;
         }
     }
 
@@ -102,17 +69,14 @@ public class UltimateLoad : MonoBehaviour
             _yinSlider.value = _yinFill;
         }
         if (_yinFill >= 100) {
-            _textInfo.alpha = 1f;
             _yinUltimateImage.color = new Color {
                 r = _yinUltimateImage.color.r,
                 g = _yinUltimateImage.color.g,
                 b = _yinUltimateImage.color.b,
                 a = 100
             };
-            // _textInfo.text = "Yin is charged";
             _yinChargeImage.SetActive(true);
-            // StartCoroutine(FadeText());
-            // CheckFullCharge();
+            CheckBothCharged();
         }
     }
 
@@ -124,24 +88,14 @@ public class UltimateLoad : MonoBehaviour
         }
         if (_yangFill >= 100)
         {
-            _textInfo.alpha = 1f;
             _yangUltimateImage.color = new Color {
                 r = _yangUltimateImage.color.r,
                 g = _yangUltimateImage.color.g,
                 b = _yangUltimateImage.color.b,
                 a = 100
             };
-            // _textInfo.text = "Yang is charged";
             _yangChargeImage.SetActive(true);
-            // StartCoroutine(FadeText());
-            // CheckFullCharge();
+            CheckBothCharged();
         }
     }
-
-    // public IEnumerator FadeText() {
-    //     while (_textInfo.alpha > 0) {
-    //         _textInfo.alpha -= (Time.deltaTime / 2);
-    //         yield return null;
-    //     }
-    // }
 }
