@@ -1431,8 +1431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f2f8af0d2e2ca44981bcad0e24fcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yinChargeAmount: 3
-  _yangChargeAmount: 3
+  _yinChargeAmount: 2
+  _yangChargeAmount: 5
   _loseChargeAmount: 7
   _yangCriticalChargeAmount: 6
   _textInfo: {fileID: 953286054}
