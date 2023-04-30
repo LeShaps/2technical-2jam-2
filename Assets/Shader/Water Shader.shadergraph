@@ -3427,7 +3427,7 @@
     "m_RefNameGeneratedByDisplayName": "Water Shield Reveal Amount",
     "m_DefaultReferenceName": "_Water_Shield_Reveal_Amount",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": false,
+    "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
