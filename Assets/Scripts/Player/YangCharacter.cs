@@ -10,7 +10,7 @@ public class YangCharacter : MonoBehaviour
 
         if (collision.gameObject.Contains(out boss))
         {
-            UltimateLoad.Instance.LooseCharge(10, true);
+            UltimateLoad.Instance.LooseCharge(false);
             Destroy(boss.gameObject);
         }
     }

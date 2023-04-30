@@ -10,7 +10,7 @@ public class YinCharacter : MonoBehaviour
 
         if (collision.gameObject.Contains(out boss))
         {
-            UltimateLoad.Instance.LooseCharge(10, true);
+            UltimateLoad.Instance.LooseCharge(true);
             Destroy(boss.gameObject);
         }
     }

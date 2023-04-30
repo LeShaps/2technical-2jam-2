@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UltimateLoad : MonoBehaviour
 {
-    [SerializeField] int _yinChargeAmount = 10;
-    [SerializeField] int _yangChargeAmount = 10;
+    [SerializeField] int _yinChargeAmount = 5;
+    [SerializeField] int _yangChargeAmount = 5;
+    [SerializeField] int _loseChargeAmount = 5;
+
     [SerializeField] int _yangCriticalChargeAmount = 20;
     [SerializeField] private TextMeshProUGUI _textInfo;
     [SerializeField] private Slider _yinSlider;
@@ -18,31 +19,36 @@ public class UltimateLoad : MonoBehaviour
 
     private float _yinFill = 0f;
     private float _yangFill = 0f;
-    public bool UltimateReady { get; private set; }
     public static UltimateLoad Instance { get; private set; }
+
     void Awake() => Instance = this;
 
-    public void ActivateUltimate()
-    {
-        if (_yinFill != 100 || _yangFill != 100)
-            return;
-        else {
-            EndZone[] WinZones = FindObjectsOfType<EndZone>();
-            if (WinZones.All(x => x.Activated)) {
-                GameManager.Instance.ChangeState(GameState.Win);
-            } else {
-                _textInfo.alpha = 1f;
-                _textInfo.text = "One of the character is not on the ultimate point";
-                StartCoroutine(FadeText());
-            }
-        }
-    }
+    // public void ActivateUltimate()
+    // {
+    //     if (_yinFill < 100 || _yangFill < 100)
+    //         return;
 
-    private void CheckFullCharge() {
+    //     else {
+    //         EndZone[] WinZones = FindObjectsOfType<EndZone>();
+    //         if (WinZones.All(x => x.Activated))
+    //         {
+    //             GameManager.Instance.ChangeState(GameState.Win);
+    //         } else {
+    //             _textInfo.alpha = 1f;
+    //             _textInfo.text = "One of the character is not on the ultimate point";
+    //             StartCoroutine(FadeText());
+    //         }
+    //     }
+    // }
+
+    private void CheckFullCharge()
+    {
         if (_yinFill >= 100 &&  _yangFill >= 100) {
             _textInfo.alpha = 1f;
             _textInfo.text = "The ultimate is ready!";
-            StartCoroutine(FadeText());
+            // StartCoroutine(FadeText());
+
+            GameManager.Instance.ChangeState(GameState.Win);
             
             _ultimateImage.color = new Color {
                 r = _ultimateImage.color.r,
@@ -50,17 +56,20 @@ public class UltimateLoad : MonoBehaviour
                 b = _ultimateImage.color.b,
                 a = 100
             };
+
+            // GameManager.Instance.ChangeState(GameState.UltimateReady);
+            GameManager.Instance.ChangeState(GameState.Win);
         }
     }
 
-    public void LooseCharge(int amount, bool yin)
+    public void LooseCharge(bool yin)
     {
         if (yin) {
-            _yinFill -= amount;
+            _yinFill -= _loseChargeAmount;
             if (_yinFill < 0) _yinFill = 0;
             _yinSlider.value = _yinFill;
         } else {
-            _yangFill -= amount;
+            _yangFill -= _loseChargeAmount;
             if (_yangFill < 0) _yangFill = 0;
             _yangSlider.value = _yangFill;
         }

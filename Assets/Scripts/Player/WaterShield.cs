@@ -89,9 +89,6 @@ public class WaterShield : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("WaterShield");
-        Debug.Log(collision.gameObject);
-
         BossProjectile bossProjectile;
         if (collision.gameObject.Contains(out bossProjectile))
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
 using static UnityEngine.Mathf;
@@ -28,6 +29,8 @@ public class Boss : MonoBehaviour
     [SerializeField] SplineContainer _splineContainer;
     Spline _splines;
 
+    [SerializeField] private GameObject _ultimateVcam;
+
     [SerializeField] float _patternDuration = 5f;
     float timeSinceLastPattern;
     public Pattern CurrentPattern { get; private set; }
@@ -45,7 +48,7 @@ public class Boss : MonoBehaviour
 
     public void StopPatterns()
     {
-        Debug.Log("StopPatterns()");
+        CurrentPattern = Pattern.None;
     }
 
     Pattern NextPattern()
@@ -58,6 +61,24 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (CurrentPattern == Pattern.None)
+        {
+            // Move to center
+            var nextPos = _splineContainer.EvaluatePosition(0.5f);
+            nextPos.y = transform.position.y;
+            if (Vector3.Distance(transform.position, nextPos) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * _moveSpeed);
+                return;
+            }
+
+            // Play Ultimate
+            _ultimateVcam.SetActive(true);
+            StartCoroutine(Ultimate());
+
+            return;
+        }
+
         // Patterns switch
         timeSinceLastPattern += Time.deltaTime;
         if (timeSinceLastPattern >= _patternDuration)
@@ -150,9 +171,16 @@ public class Boss : MonoBehaviour
                 }
                 // TODO: orb goes then comes back to the wizard
             }
-            
         }
         RotateToActivePlayer();
+    }
+
+    [SerializeField] GameObject _weakPoint;
+
+    IEnumerator Ultimate()
+    {
+        _weakPoint.transform.localScale += Vector3.one * Time.deltaTime;
+        yield return new WaitForSeconds(3f);
     }
 
     void RotateToActivePlayer()
@@ -192,4 +220,5 @@ public enum Pattern
 {
     PingPongSingleOrb = 0,
     CenterOrbWaves = 1,
+    None = 2,
 }

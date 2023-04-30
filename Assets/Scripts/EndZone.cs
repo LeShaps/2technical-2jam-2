@@ -6,13 +6,14 @@ public class EndZone : MonoBehaviour
     public bool Activated = false;
     public bool IsYinZone;
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (!UltimateLoad.Instance.UltimateReady)
+        Debug.Log(collision.gameObject);
+        if (GameManager.Instance.State != GameState.UltimateReady)
             return;
         
         PlayerController player;
-        if (collider.gameObject.Contains(out player))
+        if (collision.gameObject.Contains(out player))
         {
             if (IsYinZone && player.CompareTag("Yin") || !IsYinZone && player.CompareTag("Yang"))
             {

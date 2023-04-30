@@ -16,7 +16,6 @@ public class PlayerAnimatorController : MonoBehaviour
 
     private void OnAttack()
     {
-        Debug.Log("OnAttack");
         _animator.SetTrigger("Attack");
     }
 
@@ -26,7 +25,6 @@ public class PlayerAnimatorController : MonoBehaviour
             return;
             
         _isRunning = true;
-        Debug.Log("OnRunning");
         if (GameManager.Instance.ActivePlayer == Player.Yin)
             _animator.SetBool("YinIsRunning", true);
         else
@@ -40,7 +38,6 @@ public class PlayerAnimatorController : MonoBehaviour
 
         _isRunning = false;
 
-        Debug.Log("OnStopRunning");
         if (GameManager.Instance.ActivePlayer == Player.Yin)
             _animator.SetBool("YinIsRunning", true);
         else
