@@ -32,6 +32,8 @@ public class Boss : MonoBehaviour
     float timeSinceLastPattern;
     public Pattern CurrentPattern { get; private set; }
     
+    [SerializeField] GameObject _shieldPrefab;
+    
     public static Boss Instance { get; set; }
     void Awake() => Instance = this;
 
@@ -120,6 +122,12 @@ public class Boss : MonoBehaviour
             _circleOrbsTimer -= Time.deltaTime;
             if (_circleOrbsTimer < 0)
             {
+                //spawn shield vfx
+                if (timeSinceLastPattern < _patternDuration - _circleOrbDuration)
+                {
+                    SpawnShield(transform.position + Vector3.up, Vector3.forward, _circleOrbDuration);
+                }
+                
                 _circleOrbsTimer = _circleOrbsPace;
                 float step = 2f / _circleOrbsCount;
                 float v = 0.5f * step - 1f; // cover the -1/-1 range instead of 0/2
@@ -142,6 +150,7 @@ public class Boss : MonoBehaviour
                 }
                 // TODO: orb goes then comes back to the wizard
             }
+            
         }
         RotateToActivePlayer();
     }
@@ -159,6 +168,12 @@ public class Boss : MonoBehaviour
     {
         var go = Instantiate(_orbPrefab, spawnPos, Quaternion.LookRotation(spawnDir), _projectilesParentTransform);
         go.GetComponent<Projectile>().Speed = startSpeed;
+        Destroy(go, lifeTime);
+    }
+    
+    private void SpawnShield(Vector3 spawnPos, Vector3 spawnDir, float lifeTime)
+    {
+        var go = Instantiate(_shieldPrefab, spawnPos, Quaternion.LookRotation(spawnDir), _projectilesParentTransform);
         Destroy(go, lifeTime);
     }
 
