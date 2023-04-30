@@ -21,6 +21,7 @@ public class HerosController : MonoBehaviour
 
     public void OnSwitchCharacter(InputValue value)
     {
+        GameManager.Instance.ActivePlayerController.SetAnimatorBoolVariable("Running", false);
         GameManager.Instance.SwitchActivePlayer();
         bool activeYang = GameManager.Instance.ActivePlayer == Player.Yang;
 
@@ -53,7 +54,6 @@ public class HerosController : MonoBehaviour
             if (!_isRefilling) {
                 _yinWaterShield.ActivateFewSeconds();
                 _isRefilling = true;
-                pc.SetAnimatorTriggerVariable("WaterShield");
             }
         }
         else

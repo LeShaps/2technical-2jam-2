@@ -38,6 +38,7 @@ public class WaterShield : MonoBehaviour
 
     private IEnumerator ActivateShieldThenDesactivate()
     {
+        GameManager.Instance.ActivePlayerController.SetAnimatorTriggerVariable("CastShield");
         StartCoroutine(ScaleUpShield());
         StartCoroutine(FadeInShield());
         EventManager.TriggerEvent("TriggerShield", "Deplete");
@@ -88,22 +89,19 @@ public class WaterShield : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("WaterShield");
+        Debug.Log(collision.gameObject);
+
         BossProjectile bossProjectile;
         if (collision.gameObject.Contains(out bossProjectile))
         {
             ContactPoint firstContact = collision.contacts[0];
-            //Debug.Log("Normal of the first point: " + firstContact.normal);
-            //Debug.DrawRay(firstContact.point, firstContact.normal * 5, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f), 3f);
-            Destroy(bossProjectile.gameObject);
             _ul.AddYinCharge();
-            // _shieldLife -= 2;
             foreach (ParticleSystem vfx in _waterShieldHitParticleContainer.GetComponentsInChildren<ParticleSystem>())
             {
                 Instantiate(vfx, firstContact.point, Quaternion.identity);
                 vfx.Play();
             }
-            Instantiate(_bossHitParticle, firstContact.point, Quaternion.identity);
-            _bossHitParticle.Play();
             SoundManager.GetInstance().PlayLocalizedPitch("Shield", GetComponent<AudioSource>());
             EventManager.TriggerEvent("TriggerSymbol", "Water");
         }

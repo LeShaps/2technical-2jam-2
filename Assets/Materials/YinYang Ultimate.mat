@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YinYang arena
+  m_Name: YinYang Ultimate
   m_Shader: {fileID: -6465566751694194690, guid: 79dc2585094fa7f44aaabc4d3e196575,
     type: 3}
   m_Parent: {fileID: 0}
