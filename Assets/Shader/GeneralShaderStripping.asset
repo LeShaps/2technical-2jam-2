@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce01c7e38d77374f90e48cc0061b138, type: 3}
+  m_Name: GeneralShaderStripping
+  m_EditorClassIdentifier: 
+  _expanded: 0
+  _order: 0
+  _active: 1
+  _notes: general shader stripping
+  _logOutput: 0
+  _blacklistedShaderNames:
+  - matchType: 2
+    namePattern: Legacy/
+    caseInsensitive: 0
+  - matchType: 2
+    namePattern: Cyanilux/
+    caseInsensitive: 0
+  _blacklistedPassTypes: 0a0000000c000000
+  _blacklistedKeywords:
+  - LIGHTMAP_ON
+  - DIRLIGHTMAP_COMBINED
+  - DYNAMICLIGHTMAP_ON
+  - LIGHTMAP_SHADOW_MIXING
+  - SHADOWS_SHADOWMASK
+  - FOG_EXP
+  - FOG_EXP2
+  - STEREO_INSTANCING_ON
+  - STEREO_MULTIVIEW_ON
+  - STEREO_CUBEMAP_RENDER_ON
+  - UNITY_SINGLE_PASS_STEREO
+  - DEBUG_DISPLAY
