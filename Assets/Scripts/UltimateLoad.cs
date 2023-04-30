@@ -64,14 +64,23 @@ public class UltimateLoad : MonoBehaviour
 
     public void LooseCharge(bool yin)
     {
-        if (yin) {
-            _yinFill -= _loseChargeAmount;
-            if (_yinFill < 0) _yinFill = 0;
-            _yinSlider.value = _yinFill;
-        } else {
-            _yangFill -= _loseChargeAmount;
-            if (_yangFill < 0) _yangFill = 0;
-            _yangSlider.value = _yangFill;
+        if (yin && GameManager.Instance.ActivePlayer == Player.Yin)
+        {
+            if (GameManager.Instance.ActivePlayer == Player.Yin)
+            {                
+                _yinFill -= _loseChargeAmount;
+                if (_yinFill < 0) _yinFill = 0;
+                _yinSlider.value = _yinFill;
+            }
+        }
+        else
+        {
+            if (GameManager.Instance.ActivePlayer == Player.Yang)
+            {
+                _yangFill -= _loseChargeAmount;
+                if (_yangFill < 0) _yangFill = 0;
+                _yangSlider.value = _yangFill;
+            }
         }
     }
 
