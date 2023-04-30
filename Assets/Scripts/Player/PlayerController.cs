@@ -12,13 +12,29 @@ public class PlayerController : MonoBehaviour
     private Vector3 _targetDirection;
     private Quaternion _freeRotation;
     private CharacterController _cc;
- 
-    private void Start()
+    
+    Animator _animator;
+    bool _isRunning = false;
+
+    private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _cc = GetComponent<CharacterController>();
         // Lock Cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void SetAnimatorBoolVariable(string name, bool boolValue)
+    {
+        if (_animator == null) return;
+        _animator.SetBool(name, boolValue);
+    }
+
+    public void SetAnimatorTriggerVariable(string name)
+    {
+        if (_animator == null) return;
+        _animator.SetTrigger(name);
     }
 
     private void FixedUpdate()
@@ -26,9 +42,8 @@ public class PlayerController : MonoBehaviour
         if (Player == GameManager.Instance.ActivePlayer)
         {
             float movementDirectionY = _moveDir.y;
-            bool isRunning = false;
-            isRunning = Input.GetKey(KeyCode.LeftShift);
-    
+            bool isRunning = Input.GetKey(KeyCode.LeftShift);
+
             float horizontal = Move.x;
             float vertical = Move.y;
             if (vertical < 0)
@@ -61,6 +76,10 @@ public class PlayerController : MonoBehaviour
     
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), _playerInfo.RotationPower * Time.deltaTime);
             }
+            else
+            {
+                SetAnimatorBoolVariable("Running", false);
+            }
             _moveDir.y = movementDirectionY;
         }
         if (!_cc.isGrounded)
@@ -72,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     public void LaunchFireball()
     {
+        EventManager.TriggerEvent("Attack");
         var camForward = Camera.main.transform.TransformDirection(Vector3.forward);
 
         // Rotate player before projectile launch
@@ -79,6 +99,6 @@ public class PlayerController : MonoBehaviour
         
         Quaternion projectileDir = Quaternion.LookRotation(camForward);
         var go = Instantiate(_playerInfo.YangProjectile, _fireballLaunchTransform.position, projectileDir);
-        Destroy(go, 3f);
+        Destroy(go, 2f);
     }
 }

@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 2a7d4e8ec3ab49a4f9bddd0ae357472e
+guid: 57a0b664d66031944af426168b2cbb7c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_YinYang_Black
+    second: {fileID: 2100000, guid: 76531b013ed75de42b9ad6bac1f7bccf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_YinYang_White
+    second: {fileID: 2100000, guid: 30a006d1bd3a0684eaa931b6d939966e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

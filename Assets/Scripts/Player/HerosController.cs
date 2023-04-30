@@ -36,12 +36,16 @@ public class HerosController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        GameManager.Instance.ActivePlayerController.Move = value.Get<Vector2>();
+        PlayerController pc = GameManager.Instance.ActivePlayerController;
+        pc.Move = value.Get<Vector2>();
+        pc.SetAnimatorBoolVariable("Running", true);
     }
 
     public void OnFire(InputValue value)
     {
-        if (Time.timeSinceLevelLoad == 0)
+        PlayerController pc = GameManager.Instance.ActivePlayerController;
+
+        if (Time.timeSinceLevelLoad < 0.1f)
             return;
 
         if (GameManager.Instance.ActivePlayer == Player.Yin)
@@ -49,11 +53,13 @@ public class HerosController : MonoBehaviour
             if (!_isRefilling) {
                 _yinWaterShield.ActivateFewSeconds();
                 _isRefilling = true;
+                pc.SetAnimatorTriggerVariable("WaterShield");
             }
         }
         else
         {
-            GameManager.Instance.ActivePlayerController.LaunchFireball();
+            pc.LaunchFireball();
+            pc.SetAnimatorTriggerVariable("SingleAttack");
         }
     }
 }

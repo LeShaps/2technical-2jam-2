@@ -65,7 +65,7 @@ public class Boss : MonoBehaviour
             timeSinceLastPattern = 0;
             CurrentPattern = NextPattern();
 
-            Debug.Log($"Switch to pattern {CurrentPattern}");
+            Debug.Log($"Current Pattern : {CurrentPattern}");
         }
         
         if (CurrentPattern == Pattern.PingPongSingleOrb)
@@ -98,10 +98,9 @@ public class Boss : MonoBehaviour
                 Vector3 spawnPos = transform.position;
                 spawnPos.y = _orbSpawnHeight;
                 Vector3 spawnDir = (playerPos - spawnPos).normalized;
-
-                // float orbSpawnDistance = 1.1f;
+                float orbSpawnDistance = 1.1f;
+                SpawnOrb(spawnPos + spawnDir * orbSpawnDistance, spawnDir, _singleOrbSpeed, _singleOrbDuration);
                 // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(spawnDir), Time.deltaTime);
-                // SpawnOrb(spawnPos + spawnDir * orbSpawnDistance, spawnDir, _singleOrbSpeed, _singleOrbDuration);
             }
         }
 
@@ -138,7 +137,7 @@ public class Boss : MonoBehaviour
                     spawnPos = spawnPos * _circleOrbLaunchRadius + transform.position;
                     var spawnDir = (spawnPos - transform.position).normalized;
                     spawnPos.y = _orbSpawnHeight;
-                    // TODO: create variation (spawn offset)
+                    // TODO: create variation (spawn offset and projectiles movements)
                     SpawnOrb(spawnPos, spawnDir, _circleOrbSpeed, _circleOrbDuration);
                 }
                 // TODO: orb goes then comes back to the wizard
