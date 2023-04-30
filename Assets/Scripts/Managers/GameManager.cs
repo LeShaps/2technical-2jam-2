@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.Starting);
         SoundManager.GetInstance().StartLoop("Music1", "Yin", 1);
         SoundManager.GetInstance().StartLoop("Music2", "Yang", 0);
+        SoundManager.GetInstance().PlaySoundGeneral("Intro");
     }
 
     public void ChangeState(GameState newState)
