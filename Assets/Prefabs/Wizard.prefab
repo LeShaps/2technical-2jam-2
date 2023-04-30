@@ -5847,14 +5847,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034e3f53495d819479b86bd890ef603f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _singleOrbPace: 0.4
-  _singleOrbSpeed: 15
+  _singleOrbPace: 1.5
+  _singleOrbSpeed: 50
   _singleOrbDuration: 3
   _circleOrbsPace: 0.4
   _circleOrbSpeed: 12
   _circleOrbDuration: 2
   _circleOrbLaunchRadius: 2.5
-  _circleOrbsCount: 20
+  _circleOrbsCount: 10
   _orbSpawnHeight: 1.2
   _orbPrefab: {fileID: 5360143799700580182, guid: a9fc02ad94a6b9a47b8691db8607a250,
     type: 3}
@@ -5862,9 +5862,11 @@ MonoBehaviour:
   _moveSpeed: 10
   _weakPointMaxDistance: 1.5
   _splineContainer: {fileID: 0}
+  _ultimateVcam: {fileID: 0}
   _patternDuration: 6
   _shieldPrefab: {fileID: 4479288100133332176, guid: 64132c8f354438a47969ba3d40a318cb,
     type: 3}
+  _weakPoint: {fileID: 0}
 --- !u!136 &7374791263209090130
 CapsuleCollider:
   m_ObjectHideFlags: 0
