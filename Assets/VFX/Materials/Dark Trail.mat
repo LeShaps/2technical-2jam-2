@@ -54,7 +54,7 @@ Material:
     - _QueueOffset: 0
     - _SCALE: 1.5
     - _SPEED: -2
-    - _cutout: 0.231
+    - _cutout: 0.06
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &3262343843865077459
