@@ -9,8 +9,6 @@ public class EndZone : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject);
-        if (GameManager.Instance.State != GameState.UltimateReady)
-            return;
         
         PlayerController player;
         if (collision.gameObject.Contains(out player))

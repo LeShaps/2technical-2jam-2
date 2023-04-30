@@ -71,6 +71,9 @@ public class UltimateLoad : MonoBehaviour
 
     public void LooseCharge(bool yin)
     {
+        if (GameManager.Instance.State == GameState.Win || GameManager.Instance.State == GameState.End)
+            return;
+        
         if (yin && GameManager.Instance.ActivePlayer == Player.Yin)
         {
             if (GameManager.Instance.ActivePlayer == Player.Yin)

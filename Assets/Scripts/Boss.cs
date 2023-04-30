@@ -62,7 +62,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.State == GameState.Win || CurrentPattern == Pattern.None)
+        if (CurrentPattern == Pattern.None)
         {
             // Move to center
             var nextPos = _splineContainer.EvaluatePosition(0.5f);

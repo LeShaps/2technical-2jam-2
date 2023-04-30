@@ -48,9 +48,6 @@ public class GameManager : MonoBehaviour
             case GameState.BossPatterns:
                 HandleBossPatterns();
                 break;
-            case GameState.UltimateReady:
-                HandleUltimateReady();
-                break;
             case GameState.Win:
                 HandleWin();
                 break;
@@ -89,11 +86,6 @@ public class GameManager : MonoBehaviour
         Boss.Instance.StartPatterns();
     }
 
-    private void HandleUltimateReady()
-    {
-        State = GameState.UltimateReady;
-    }
-
     private void HandleWin()
     {
         _yangReticleCanvas.SetActive(false);
@@ -122,9 +114,8 @@ public enum GameState
 {
     Starting = 0,
     BossPatterns = 1,
-    UltimateReady = 2,
-    Win = 3,
-    End = 4,
+    Win = 2,
+    End = 3,
 }
 
 [Serializable]
