@@ -76,7 +76,7 @@ public class UltimateLoad : MonoBehaviour
         
         if (yin && GameManager.Instance.ActivePlayer == Player.Yin)
         {
-            if (GameManager.Instance.ActivePlayer == Player.Yin)
+            if (GameManager.Instance.ActivePlayer == Player.Yin && _yinChargeAmount < 100)
             {                
                 _yinFill -= _loseChargeAmount;
                 if (_yinFill < 0) _yinFill = 0;
@@ -85,7 +85,7 @@ public class UltimateLoad : MonoBehaviour
         }
         else
         {
-            if (GameManager.Instance.ActivePlayer == Player.Yang)
+            if (GameManager.Instance.ActivePlayer == Player.Yang && _yangChargeAmount < 100)
             {
                 _yangFill -= _loseChargeAmount;
                 if (_yangFill < 0) _yangFill = 0;
