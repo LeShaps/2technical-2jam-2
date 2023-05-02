@@ -35,6 +35,7 @@ public class Boss : MonoBehaviour
     
     [SerializeField] GameObject _shieldPrefab;
     [SerializeField] ParticleSystem _bossHitParticle;
+    private bool spawnShield = true;
 
     public static Boss Instance { get; set; }
     void Awake() => Instance = this;
@@ -129,6 +130,8 @@ public class Boss : MonoBehaviour
                 SpawnOrb(spawnDirOffset, spawnDir, _singleOrbSpeed, _singleOrbDuration);
                 // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(spawnDir), Time.deltaTime);
             }
+
+            spawnShield = true;
         }
 
         if (CurrentPattern == Pattern.CenterOrbWaves)
@@ -141,18 +144,18 @@ public class Boss : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * _moveSpeed);
                 return;
             }
-            // RotateToActivePlayer();
+            
+            //spawn shield vfx
+            if (spawnShield)
+            {
+                spawnShield = false;
+                SpawnShield(transform.position + Vector3.up, Vector3.forward, _patternDuration-2);
+            }
 
             // Orb Waves
             _circleOrbsTimer -= Time.deltaTime;
             if (_circleOrbsTimer < 0)
             {
-                //spawn shield vfx
-                if (timeSinceLastPattern < _patternDuration - _circleOrbDuration)
-                {
-                    SpawnShield(transform.position + Vector3.up, Vector3.forward, _circleOrbDuration);
-                }
-                
                 _circleOrbsTimer = _circleOrbsPace;
                 float step = 2f / _circleOrbsCount;
                 float v = 0.5f * step - 1f; // cover the -1/-1 range instead of 0/2
